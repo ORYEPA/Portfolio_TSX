@@ -1,0 +1,255 @@
+.container {
+  min-height: 100vh;
+  transition: all 500ms ease;
+}
+
+.themeSelector {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 50;
+}
+
+.desktopSidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopSidebar {
+    display: block;
+  }
+}
+
+.mobileMenuBtn {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 50;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  color: white;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+}
+
+@media (min-width: 1024px) {
+  .mobileMenuBtn {
+    display: none;
+  }
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+}
+
+@media (min-width: 1024px) {
+  .mobileMenu {
+    display: none;
+  }
+}
+
+.mobileMenuContent {
+  width: 16rem;
+}
+
+.mobileMenuBackdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 256px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.mainContent {
+  margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .mainContent {
+    margin-left: 16rem;
+  }
+}
+
+.section {
+  padding: 5rem 1.5rem;
+  transition: all 500ms ease;
+}
+
+.sectionContainer {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.sectionHeader {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .sectionHeader {
+    font-size: 3.75rem;
+  }
+}
+
+.experienceHeader {
+  background: linear-gradient(135deg, var(--theme-secondary-start), var(--theme-secondary-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.card {
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  transition: all 300ms ease;
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.02);
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.cardSubtitle {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  line-height: 1.625;
+}
+
+.jobsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.jobCard {
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(16px);
+  transition: all 300ms ease;
+  transform-style: preserve-3d;
+}
+
+.jobCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.02);
+}
+
+.jobHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .jobHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.jobTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.jobPeriod {
+  font-weight: 500;
+  background: linear-gradient(135deg, var(--theme-accent-start), var(--theme-accent-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.jobCompany {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+.contactSection {
+  padding: 5rem 1.5rem;
+  color: white;
+  transition: all 500ms ease;
+}
+
+.contactContainer {
+  max-width: 56rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.contactHeader {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .contactHeader {
+    font-size: 3.75rem;
+  }
+}
+
+.contactDescription {
+  font-size: 1.125rem;
+  margin-bottom: 3rem;
+}
+
+.contactBtn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 300ms ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+  color: white;
+}
+
+.contactBtn:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.05);
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}

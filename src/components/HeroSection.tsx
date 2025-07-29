@@ -1,10 +1,10 @@
 import { motion } from 'motion/react';
 import { ChevronDown, Code, Cpu, Database } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import styles from '../styles/HeroSection.module.css';
 
 export function HeroSection() {
-  const { getThemeClasses } = useTheme();
-  const themeClasses = getThemeClasses();
+  const { currentTheme } = useTheme();
 
   const floatingElements = [
     { Icon: Code, position: { top: '20%', left: '10%' }, delay: 0 },
@@ -12,8 +12,34 @@ export function HeroSection() {
     { Icon: Database, position: { top: '30%', right: '10%' }, delay: 1 },
   ];
 
+  const getHeroBackground = () => {
+    switch (currentTheme) {
+      case 'twilight':
+        return { background: 'linear-gradient(135deg, #0f172a, #581c87, #1e293b)' };
+      case 'sunset':
+        return { background: 'linear-gradient(135deg, #fed7aa, #fecaca, #fce7f3)' };
+      case 'earthen':
+        return { background: 'linear-gradient(135deg, #d1fae5, #ecfdf5, #f0fdfa)' };
+      default:
+        return { background: 'linear-gradient(135deg, #e0e7ff, #ffffff, #f3e8ff)' };
+    }
+  };
+
+  const getTextColor = () => {
+    return currentTheme === 'twilight' ? 'text-slate-100' : 'text-gray-800';
+  };
+
+  const getCardBackground = () => {
+    switch (currentTheme) {
+      case 'twilight':
+        return 'linear-gradient(135deg, rgba(51, 65, 85, 0.8), rgba(71, 85, 105, 0.6))';
+      default:
+        return 'linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6))';
+    }
+  };
+
   return (
-    <section className={`min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br ${themeClasses.background} transition-all duration-500`}>
+    <section className={styles.hero} style={getHeroBackground()}>
       {/* 3D Floating Background Elements */}
       {floatingElements.map((element, index) => {
         const { Icon, position, delay } = element;
@@ -35,24 +61,24 @@ export function HeroSection() {
               repeatType: "reverse",
               ease: "easeInOut"
             }}
-            className="absolute pointer-events-none"
+            className={styles.floatingElement}
             style={position}
           >
-            <Icon className={`w-16 h-16 bg-gradient-to-r ${themeClasses.primary} bg-clip-text text-transparent`} />
+            <Icon className={styles.floatingIcon} />
           </motion.div>
         );
       })}
 
       {/* Main Content */}
-      <div className="text-center z-10 max-w-4xl px-6">
+      <div className={styles.content}>
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8"
+          className={styles.headerSection}
         >
           <motion.h1 
-            className={`text-6xl md:text-8xl font-bold bg-gradient-to-r ${themeClasses.primary} bg-clip-text text-transparent mb-4`}
+            className={styles.mainTitle}
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -60,7 +86,7 @@ export function HeroSection() {
             ¡Hola!
           </motion.h1>
           <motion.h2 
-            className={`text-3xl md:text-5xl font-semibold ${themeClasses.text} mb-6`}
+            className={`${styles.subtitle} ${getTextColor()}`}
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
@@ -73,11 +99,14 @@ export function HeroSection() {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="mb-12"
+          className={styles.introSection}
         >
-          <div className={`bg-gradient-to-br ${themeClasses.card} backdrop-blur-lg rounded-2xl p-8 shadow-2xl transform hover:scale-105 transition-all duration-500 hover:shadow-3xl border border-white/20`}>
-            <p className={`text-lg md:text-xl ${themeClasses.text} leading-relaxed max-w-3xl mx-auto`}>
-              I am a <span className={`font-semibold bg-gradient-to-r ${themeClasses.primary} bg-clip-text text-transparent`}>Full Stack developer</span> with over 3 years of experience building technology solutions focused on efficiency, data analysis, and process improvement. My approach combines solid web development skills with knowledge of databases and automation.
+          <div 
+            className={styles.introCard}
+            style={{ background: getCardBackground() }}
+          >
+            <p className={`${styles.introText} ${getTextColor()}`}>
+              I am a <span className={styles.highlight}>Full Stack developer</span> with over 3 years of experience building technology solutions focused on efficiency, data analysis, and process improvement. My approach combines solid web development skills with knowledge of databases and automation.
             </p>
           </div>
         </motion.div>
@@ -87,12 +116,12 @@ export function HeroSection() {
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+          className={styles.skillsGrid}
         >
           {[
-            { title: 'Frontend', skills: 'React, Vue, Angular', gradient: themeClasses.secondary },
-            { title: 'Backend', skills: 'Node.js, PHP, .NET', gradient: themeClasses.primary },
-            { title: 'Database', skills: 'MySQL, PostgreSQL, MongoDB', gradient: themeClasses.accent }
+            { title: 'Frontend', skills: 'React, Vue, Angular', gradient: 'skillCardSecondary' },
+            { title: 'Backend', skills: 'Node.js, PHP, .NET', gradient: 'skillCardPrimary' },
+            { title: 'Database', skills: 'MySQL, PostgreSQL, MongoDB', gradient: 'skillCardAccent' }
           ].map((card, index) => (
             <motion.div
               key={index}
@@ -105,9 +134,9 @@ export function HeroSection() {
               className="group"
               style={{ transformStyle: 'preserve-3d' }}
             >
-              <div className={`bg-gradient-to-br ${card.gradient} p-6 rounded-xl text-white shadow-lg transform transition-all duration-300 group-hover:shadow-2xl`}>
-                <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                <p className="text-sm opacity-90">{card.skills}</p>
+              <div className={`${styles.skillCard} ${styles[card.gradient]}`}>
+                <h3 className={styles.skillTitle}>{card.title}</h3>
+                <p className={styles.skillDescription}>{card.skills}</p>
               </div>
             </motion.div>
           ))}
@@ -118,14 +147,14 @@ export function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.8 }}
-          className="flex flex-col items-center"
+          className={styles.scrollIndicator}
         >
-          <p className={`${themeClasses.text} mb-4`}>Scroll to explore</p>
+          <p className={`${styles.scrollText} ${getTextColor()}`}>Scroll to explore</p>
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ChevronDown className={`w-6 h-6 bg-gradient-to-r ${themeClasses.primary} bg-clip-text text-transparent`} />
+            <ChevronDown className={styles.scrollIcon} />
           </motion.div>
         </motion.div>
       </div>
