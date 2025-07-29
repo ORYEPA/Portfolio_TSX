@@ -1,148 +1,134 @@
-import { motion } from 'motion/react';
-import { Code2, Database, Globe, Zap } from 'lucide-react';
-import styles from '../styles/AboutSection.module.css';
+
+import React, { useEffect, useState } from 'react'
+import { motion } from 'motion/react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import fm from 'front-matter'
+import { Code, Award, User, Coffee } from 'lucide-react'
+
+import styles from '../styles/AboutSection.module.css'
+
+type StatsItem = { icon: string; number: string; label: string }
+type SkillItem = { name: string; percent: number; slug: string }
 
 export function AboutSection() {
-  const skills = [
-    {
-      category: 'Frontend',
-      technologies: ['React', 'Vue.js', 'Angular', 'JavaScript', 'TypeScript', 'HTML/CSS'],
-      icon: Globe,
-      color: 'skillIconSecondary'
-    },
-    {
-      category: 'Backend',
-      technologies: ['Node.js', 'PHP', '.NET', 'Python', 'Express', 'Laravel'],
-      icon: Code2,
-      color: 'skillIconPrimary'
-    },
-    {
-      category: 'Database',
-      technologies: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'SQLite'],
-      icon: Database,
-      color: 'skillIconAccent'
-    },
-    {
-      category: 'Tools & Others',
-      technologies: ['Git', 'Docker', 'AWS', 'Linux', 'REST APIs', 'GraphQL'],
-      icon: Zap,
-      color: 'skillIconPrimary'
-    }
-  ];
+  const [front, setFront] = useState<{
+    title: string
+    description: string
+    stats: StatsItem[]
+    skills: SkillItem[]
+    approach: string
+  } | null>(null)
+
+  useEffect(() => {
+    const mdUrl = `${process.env.PUBLIC_URL || ''}/content/DataInfo/Aboutme.md`
+    fetch(mdUrl)
+      .then(res => {
+        if (!res.ok) throw new Error(`No se encontró MD en ${mdUrl}`)
+        return res.text()
+      })
+      .then(raw => {
+        const { attributes } = fm<{
+          title: string
+          description: string
+          stats: StatsItem[]
+          skills: SkillItem[]
+          approach: string
+        }>(raw)
+
+        setFront({
+          title: attributes.title,
+          description: attributes.description,
+          stats: attributes.stats,
+          skills: attributes.skills,
+          approach: attributes.approach,
+        })
+      })
+      .catch(err => console.error('Error cargando Aboutme.md', err))
+  }, [])
+
+  if (!front) return null
+
+  const iconMap: Record<string, any> = { Code, Award, User, Coffee }
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className={styles.header}
-        >
-          <h2 className={styles.title}>
-            About Me
-          </h2>
-          <p className={styles.description}>
-            I'm passionate about creating efficient and scalable solutions. My journey in technology 
-            has led me to develop expertise across the full stack, with a special focus on 
-            building applications that make a real difference.
-          </p>
-        </motion.div>
+        {/* Header */}
+        <div className={styles.header}>
+          <motion.h2
+            className={styles.title}
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {front.title}
+          </motion.h2>
 
-        {/* Skills Grid */}
-        <div className={styles.skillsGrid}>
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <motion.div
-                key={skill.category}
-                initial={{ y: 100, opacity: 0, rotateY: -20 }}
-                whileInView={{ y: 0, opacity: 1, rotateY: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 10,
-                  rotateX: 5,
-                  z: 50
-                }}
-                className="group"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className={styles.skillCard}>
-                  {/* Icon */}
-                  <div className={`${styles.skillIcon} ${styles[skill.color]}`}>
-                    <Icon className={styles.skillIconImage} />
-                  </div>
-
-                  {/* Category */}
-                  <h3 className={styles.skillCategory}>
-                    {skill.category}
-                  </h3>
-
-                  {/* Technologies */}
-                  <div className={styles.skillTechnologies}>
-                    {skill.technologies.map((tech, techIndex) => (
-                      <motion.div
-                        key={tech}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: (index * 0.1) + (techIndex * 0.05) + 0.3 }}
-                        className={styles.skillTech}
-                      >
-                        {tech}
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          <motion.p
+            className={styles.description}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            {front.description}
+          </motion.p>
         </div>
 
-        {/* Personal Touch */}
-        <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className={styles.personalSection}
-        >
-          <div className={styles.personalCard}>
-            <h3 className={styles.personalTitle}>
-              Why I Love What I Do
-            </h3>
-            <div className={styles.personalGrid}>
-              <div className={styles.personalItem}>
-                <div className={styles.personalEmoji}>🚀</div>
-                <h4 className={styles.personalItemTitle}>Innovation</h4>
-                <p className={styles.personalItemDescription}>
-                  Always exploring new technologies and finding creative solutions to complex problems.
-                </p>
-              </div>
-              <div className={styles.personalItem}>
-                <div className={styles.personalEmoji}>🎯</div>
-                <h4 className={styles.personalItemTitle}>Precision</h4>
-                <p className={styles.personalItemDescription}>
-                  Attention to detail and commitment to delivering high-quality, efficient code.
-                </p>
-              </div>
-              <div className={styles.personalItem}>
-                <div className={styles.personalEmoji}>🌱</div>
-                <h4 className={styles.personalItemTitle}>Growth</h4>
-                <p className={styles.personalItemDescription}>
-                  Continuous learning and adapting to new challenges in the ever-evolving tech landscape.
-                </p>
-              </div>
+        {/* Main Grid */}
+        <div className={styles.contentGrid}>
+          {/* Left Column */}
+          <div>
+            <div className={styles.statsGrid}>
+              {front.stats.map((item, i) => {
+                const Icon = iconMap[item.icon]
+                return (
+                  <div key={i} className={styles.statCard}>
+                    <Icon className={styles.statIcon} />
+                    <div className={styles.statNumber}>{item.number}</div>
+                    <div className={styles.statLabel}>{item.label}</div>
+                  </div>
+                )
+              })}
+            </div>
+
+            <div className={styles.approachCard}>
+              <h3 className={styles.approachTitle}>My Approach</h3>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  a: ({ node, ...p }) => <a {...p} className={styles.approachLink} />
+                }}
+              >
+                {front.approach}
+              </ReactMarkdown>
             </div>
           </div>
-        </motion.div>
+
+          {/* Right Column */}
+          <div>
+            <div className={styles.skillsContainer}>
+              <h3 className={styles.skillsHeader}>Technical Skills</h3>
+              {front.skills.map(skill => (
+                <div key={skill.slug} className={styles.skillRow}>
+                  <div className={styles.skillName}>{skill.name}</div>
+                  <div className={styles.skillBarWrapper}>
+                    <div
+                      className={`${styles.skillBar} ${styles[skill.slug]}`}
+                      style={{ width: `${skill.percent}%` }}
+                    />
+                  </div>
+                  <div className={styles.skillPercent}>{skill.percent}%</div>
+                </div>
+              ))}
+            </div>
+
+            <div className={styles.imageContainer} />
+          </div>
+        </div>
       </div>
     </section>
-  );
+  )
 }
