@@ -125,8 +125,7 @@ export function AboutSection() {
               ))}
             </div>
 
-            <div className={styles.imageContainer} />
-          </div>
+        </div>
         </div>
       </div>
     </section>

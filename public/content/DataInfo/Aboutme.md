@@ -1,5 +1,7 @@
 ---
 title: "About Me"
+header: |
+  I am a Full Stack developer with over 3 years of experience building technology solutions focused on efficiency, data analysis, and process improvement. My approach combines solid web development skills with knowledge of databases and automation.
 description: |
   Passionate about creating innovative solutions that bridge technology and real-world problems.
   My journey in tech combines analytical thinking from my biomedical engineering background

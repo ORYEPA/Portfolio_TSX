@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sidebar } from './components/Sidebar';
-import { HeroSection } from './components/HeroSection';
+import { HeroSection } from './components/HeroSection'
 import { AboutSection } from './components/AboutSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { CertificatesSection } from './components/CertificatesSection';
