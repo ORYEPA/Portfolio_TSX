@@ -88,9 +88,9 @@ function AppContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
         <section id="projects"><ProjectsSection /></section>
-        <section id="certificates"><CertificatesSection /></section>
+        {/* <section id="certificates"><CertificatesSection /></section>
         <section id="notes"><NotesSection /></section>
-        <section id="random"><RandomSection /></section>
+        <section id="random"><RandomSection /></section> */}
       </main>
     </div>
   )

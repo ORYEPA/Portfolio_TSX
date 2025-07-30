@@ -13,53 +13,58 @@ code {
 }
 /* Variables globales por tema */
 :root {
-  --theme-bg:            #252A24;
-  --theme-navbar:        #3C5494;
-  --theme-text:          #CF81E4;
-  --theme-hover:         #744C8C;
-  --theme-secondary:     #836BBB;
-  --theme-primary-start: var(--theme-navbar);
-  --theme-primary-end:   var(--theme-secondary);
-  --theme-secondary-start: var(--theme-secondary);
-  --theme-secondary-end:   var(--theme-hover);
+  --theme-bg:               #252A24;
+  --theme-navbar:           #3C5494;
+  --theme-text:             #CF81E4;
+  --theme-hover:            #744C8C;
+  --theme-secondary:        #836BBB;
+  --theme-primary-start:    var(--theme-navbar);
+  --theme-primary-end:      var(--theme-secondary);
+  --theme-secondary-start:  var(--theme-secondary);
+  --theme-secondary-end:    var(--theme-hover);
+  --theme-card-bg:          #2E2A2F; /* Más claro que el fondo oscuro */
 }
 
+/* Tema: Twilight */
 html.theme-twilight {
-  --theme-bg: linear-gradient(135deg, #0f172a, #581c87, #1e293b);
-  --theme-navbar: #3b2f63;
-  --theme-text: #fac8d2;
-  --theme-hover: #8e3a6b;
-  --theme-secondary: #7f4a8f;
-  --theme-primary-start: #581c87;
-  --theme-primary-end: #1e293b;
-  --theme-secondary-start: #7f4a8f;
-  --theme-secondary-end: #8e3a6b;
-  --theme-card-bg: rgba(31, 41, 55, 0.75);
+  --theme-bg:               linear-gradient(135deg, #0f172a, #581c87, #1e293b);
+  --theme-navbar:           #3b2f63;
+  --theme-text:             #fac8d2;
+  --theme-hover:            #8e3a6b;
+  --theme-secondary:        #7f4a8f;
+  --theme-primary-start:    #581c87;
+  --theme-primary-end:      #1e293b;
+  --theme-secondary-start:  #7f4a8f;
+  --theme-secondary-end:    #8e3a6b;
+  --theme-card-bg:          #2C2A3A; /* Contraste sobre el gradiente */
 }
 
-
+/* Tema: Sunset */
 html.theme-sunset {
-  --theme-bg:            #44344C;
-  --theme-navbar:        #241C34;
-  --theme-text:          #42270b;
-  --theme-hover:         #AC4444;
-  --theme-secondary:     #743464;
-  --theme-primary-start: var(--theme-navbar);
-  --theme-primary-end:   var(--theme-secondary);
-  --theme-secondary-start: var(--theme-secondary);
-  --theme-secondary-end:   var(--theme-hover);
+  --theme-bg:               #44344C;
+  --theme-navbar:           #241C34;
+  --theme-text:             #c96767;
+  --theme-hover:            #ac6544;
+  --theme-secondary:        #743464;
+  --theme-primary-start:    var(--theme-navbar);
+  --theme-primary-end:      var(--theme-secondary);
+  --theme-secondary-start:  var(--theme-secondary);
+  --theme-secondary-end:    var(--theme-hover);
+  --theme-card-bg:          #5E4A66; /* Tonalidad más clara */
 }
 
+/* Tema: Earthen */
 html.theme-earthen {
-  --theme-bg:            #54A354;
-  --theme-navbar:        #E1DF80;
-  --theme-text:          #2D2E2D;
-  --theme-hover:         #447855;
-  --theme-secondary:     #345C34;
-  --theme-primary-start: var(--theme-navbar);
-  --theme-primary-end:   var(--theme-secondary);
-  --theme-secondary-start: var(--theme-secondary);
-  --theme-secondary-end:   var(--theme-hover);
+  --theme-bg:               #54A354;
+  --theme-navbar:           #E1DF80;
+  --theme-text:             #2D2E2D;
+  --theme-hover:            #447855;
+  --theme-secondary:        #345C34;
+  --theme-primary-start:    var(--theme-navbar);
+  --theme-primary-end:      var(--theme-secondary);
+  --theme-secondary-start:  var(--theme-secondary);
+  --theme-secondary-end:    var(--theme-hover);
+  --theme-card-bg:          #6AB86A; /* Ligeramente más claro que el fondo */
 }
 
 /* Reset básico */
@@ -69,6 +74,7 @@ body {
   color: var(--theme-text);
   font-family: sans-serif;
 }
+
 a {
   color: var(--theme-text);
   text-decoration: none;
