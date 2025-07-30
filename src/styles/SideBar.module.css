@@ -1,11 +1,18 @@
+/* src/styles/Sidebar.module.css */
+
 .sidebar {
   position: fixed;
   left: 0;
   top: 0;
   height: 100%;
   width: 16rem;
-  background: linear-gradient(135deg, #581c87 0%, #1e3a8a 50%, #4338ca 100%);
-  color: white;
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-start) 0%,
+    var(--theme-primary-end)   50%,
+    var(--theme-secondary-start) 100%
+  );
+  color: var(--theme-text);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   z-index: 50;
   overflow-y: auto;
@@ -22,7 +29,11 @@
 .avatar {
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-start),
+    var(--theme-primary-end)
+  );
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -40,12 +51,13 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
+  color: var(--theme-text);
 }
 
 .title {
-  color: #ddd6fe;
   font-size: 0.875rem;
   margin: 0;
+  color: var(--theme-secondary);
 }
 
 .navigation {
@@ -68,25 +80,32 @@
   transition: all 300ms ease;
   background: transparent;
   border: none;
-  color: white;
+  color: var(--theme-text);
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
 }
 
 .navItem:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--theme-hover);
   transform: scale(1.05);
 }
 
 .navItemActive {
-  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(
+    135deg,
+    var(--theme-primary-start),
+    var(--theme-primary-end)
+  );
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px  -2px rgba(0, 0, 0, 0.05);
 }
 
 .navIcon {
   width: 1.25rem;
   height: 1.25rem;
+  color: var(--theme-text);
 }
 
 .socialSection {
@@ -98,13 +117,13 @@
 .socialHeader {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #ddd6fe;
   margin: 0 0 0.75rem 0;
+  color: var(--theme-secondary);
 }
 
 .socialGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
 }
 
@@ -113,19 +132,20 @@
   align-items: center;
   justify-content: center;
   padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--theme-hover);
   border-radius: 0.5rem;
   transition: all 300ms ease;
   backdrop-filter: blur(4px);
-  color: white;
+  color: var(--theme-text);
   text-decoration: none;
 }
 
 .socialLink:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--theme-secondary);
 }
 
 .socialIcon {
   width: 1.25rem;
   height: 1.25rem;
+  color: var(--theme-text);
 }
