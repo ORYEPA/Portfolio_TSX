@@ -1,14 +1,11 @@
 .section {
   padding: 4rem 2rem;
-  background: #fafaff;
+  background: var(--theme-bg);
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Header */
 .header {
   text-align: center;
   margin-bottom: 3rem;
@@ -16,24 +13,20 @@
 .title {
   font-size: 3rem;
   font-weight: 700;
-  color: #cf2df9;
+  color: var(--theme-text);
 }
 .description {
   max-width: 680px;
   margin: 1rem auto 0;
   font-size: 1.125rem;
-  color: #444;
+  color: var(--theme-text);
   line-height: 1.6;
 }
-
-/* Grid Layout */
 .contentGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 }
-
-/* Stats Cards */
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -48,11 +41,19 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
 }
-.statCard:nth-child(2) { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-.statCard:nth-child(3) { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-.statCard:nth-child(4) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.statCard:nth-child(1) {
+  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+}
+.statCard:nth-child(2) {
+  background: linear-gradient(135deg, var(--theme-secondary-start), var(--theme-secondary-end));
+}
+.statCard:nth-child(3) {
+  background: var(--theme-secondary);
+}
+.statCard:nth-child(4) {
+  background: var(--theme-hover);
+}
 .statIcon {
   font-size: 2rem;
 }
@@ -64,10 +65,8 @@
   font-size: 1rem;
   opacity: 0.9;
 }
-
-/* Approach Card */
 .approachCard {
-  background: #fff;
+  background: var(--theme-card-bg);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -76,24 +75,22 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #222;
+  color: var(--theme-text);
 }
 .approachText {
   font-size: 1rem;
-  color: #444;
+  color: var(--theme-text);
   line-height: 1.6;
 }
 .approachText p {
   margin-bottom: 1rem;
 }
 .approachLink {
-  color: #cf2df9;
+  color: var(--theme-secondary);
   text-decoration: none;
 }
-
-/* Technical Skills */
 .skillsContainer {
-  background: #fff;
+  background: var(--theme-card-bg);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -103,7 +100,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
-  color: #333;
+  color: var(--theme-text);
 }
 .skillRow {
   display: flex;
@@ -113,11 +110,11 @@
 .skillName {
   flex: 1;
   font-weight: 500;
-  color: #333;
+  color: var(--theme-text);
 }
 .skillBarWrapper {
   flex: 3;
-  background: #e0e0e0;
+  background: rgba(255,255,255,0.2);
   border-radius: 999px;
   height: 10px;
   overflow: hidden;
@@ -132,22 +129,34 @@
   width: 3rem;
   text-align: right;
   font-size: 0.875rem;
-  color: #333;
+  color: var(--theme-text);
 }
-
-/* Bar Colors */
-.js      { background: #ffcd00; }
-.react   { background: #61dafb; }
-.node    { background: #3c873a; }
-.php     { background: #8892be; }
-.python  { background: #4caf50; }
-.sql     { background: #ff8c00; }
-.mongodb { background: #4db33d; }
-.git     { background: #f1502f; }
-
-/* Placeholder Graphic */
+.js {
+  background: var(--theme-primary-start);
+}
+.react {
+  background: var(--theme-primary-end);
+}
+.node {
+  background: var(--theme-secondary-start);
+}
+.php {
+  background: var(--theme-secondary-end);
+}
+.python {
+  background: var(--theme-hover);
+}
+.sql {
+  background: var(--theme-secondary);
+}
+.mongodb {
+  background: var(--theme-hover);
+}
+.git {
+  background: var(--theme-secondary-start);
+}
 .imageContainer {
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background: linear-gradient(135deg, var(--theme-secondary-start), var(--theme-secondary-end));
   border-radius: 12px;
   height: 200px;
 }

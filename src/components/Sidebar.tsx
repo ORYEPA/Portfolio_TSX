@@ -1,6 +1,6 @@
 import { Home, User, GraduationCap, Briefcase, FolderOpen, Award, StickyNote, Sparkles, Github, Linkedin, Twitter, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
-import { useTheme } from './ThemeProvider';
+import { useTheme } from '../contexts/ThemeProvider';
 import styles from '../styles/SideBar.module.css';
 
 interface SidebarProps {

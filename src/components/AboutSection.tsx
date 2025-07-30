@@ -1,4 +1,4 @@
-
+// src/components/AboutSection.tsx
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import ReactMarkdown from 'react-markdown'
@@ -8,8 +8,8 @@ import { Code, Award, User, Coffee } from 'lucide-react'
 
 import styles from '../styles/AboutSection.module.css'
 
-type StatsItem = { icon: string; number: string; label: string }
-type SkillItem = { name: string; percent: number; slug: string }
+type StatsItem  = { icon: string; number: string; label: string }
+type SkillItem  = { name: string; percent: number; slug: string }
 
 export function AboutSection() {
   const [front, setFront] = useState<{
@@ -23,10 +23,7 @@ export function AboutSection() {
   useEffect(() => {
     const mdUrl = `${process.env.PUBLIC_URL || ''}/content/DataInfo/Aboutme.md`
     fetch(mdUrl)
-      .then(res => {
-        if (!res.ok) throw new Error(`No se encontró MD en ${mdUrl}`)
-        return res.text()
-      })
+      .then(res => res.text())
       .then(raw => {
         const { attributes } = fm<{
           title: string
@@ -35,7 +32,6 @@ export function AboutSection() {
           skills: SkillItem[]
           approach: string
         }>(raw)
-
         setFront({
           title: attributes.title,
           description: attributes.description,
@@ -44,16 +40,16 @@ export function AboutSection() {
           approach: attributes.approach,
         })
       })
-      .catch(err => console.error('Error cargando Aboutme.md', err))
+      .catch(err => console.error(err))
   }, [])
 
   if (!front) return null
-
   const iconMap: Record<string, any> = { Code, Award, User, Coffee }
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
+
         {/* Header */}
         <div className={styles.header}>
           <motion.h2
@@ -65,7 +61,6 @@ export function AboutSection() {
           >
             {front.title}
           </motion.h2>
-
           <motion.p
             className={styles.description}
             initial={{ opacity: 0 }}
@@ -77,9 +72,8 @@ export function AboutSection() {
           </motion.p>
         </div>
 
-        {/* Main Grid */}
+        {/* Stats & Skills Grid */}
         <div className={styles.contentGrid}>
-          {/* Left Column */}
           <div>
             <div className={styles.statsGrid}>
               {front.stats.map((item, i) => {
@@ -93,21 +87,7 @@ export function AboutSection() {
                 )
               })}
             </div>
-
-            <div className={styles.approachCard}>
-              <h3 className={styles.approachTitle}>My Approach</h3>
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  a: ({ node, ...p }) => <a {...p} className={styles.approachLink} />
-                }}
-              >
-                {front.approach}
-              </ReactMarkdown>
-            </div>
           </div>
-
-          {/* Right Column */}
           <div>
             <div className={styles.skillsContainer}>
               <h3 className={styles.skillsHeader}>Technical Skills</h3>
@@ -124,9 +104,22 @@ export function AboutSection() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
 
+        {/* Approach Full Width */}
+        <div className={styles.approachFull}>
+          <h3 className={styles.approachTitle}>My Approach</h3>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              a: ({node, ...p}) => <a {...p} className={styles.approachLink} />
+            }}
+          >
+            {front.approach}
+          </ReactMarkdown>
         </div>
-        </div>
+
       </div>
     </section>
   )

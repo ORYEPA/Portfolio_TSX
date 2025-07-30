@@ -1,218 +1,171 @@
+/* src/styles/ProjectsSection.module.css */
+
 .section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(to bottom right, #f9fafb, #e0e7ff);
+  padding: 4rem 2rem;
+  /* Hacemos el fondo de sección más oscuro */
+  background: var(--theme-bg);
+  /* y le ponemos un ligero overlay en negro para profundizar el tono */
+  position: relative;
 }
 
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
 .container {
-  max-width: 80rem;
+  position: relative;
+  z-index: 1; /* para que el contenido esté por encima del overlay */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 4rem;
-}
-
-.title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  background: linear-gradient(to right, #9333ea, #ec4899);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 3.75rem;
-  }
-}
-
-.description {
-  font-size: 1.125rem;
-  color: #374151;
-  max-width: 42rem;
-  margin: 0 auto;
-}
-
-.projectsGrid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 2rem;
   margin-bottom: 3rem;
 }
 
-@media (min-width: 768px) {
-  .projectsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--theme-text);
 }
 
-.projectCard {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+.subtitle {
+  max-width: 680px;
+  margin: 1rem auto 0;
+  font-size: 1.125rem;
+  color: var(--theme-text);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.cardWrapper {
+  perspective: 1000px;
+}
+
+.card {
+  background: var(--theme-card-bg);
+  border-radius: 12px;
   overflow: hidden;
-  transform: scale(1);
-  transition: all 500ms ease;
-  transform-style: preserve-3d;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow:
+    0 10px 20px -5px rgba(0,0,0,0.2),
+    0 6px 6px -5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.projectCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+.cardWrapper:hover .card {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 30px -10px rgba(0,0,0,0.25),
+    0 10px 10px -5px rgba(0,0,0,0.15);
 }
 
 .imageContainer {
   position: relative;
-  overflow: hidden;
-  height: 12rem;
+  height: 180px;
 }
 
-.projectImage {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1);
-  transition: transform 500ms ease;
 }
 
-.projectCard:hover .projectImage {
-  transform: scale(1.1);
-}
-
-.imageOverlay {
+.overlay {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-
-.projectCard:hover .imageOverlay {
-  opacity: 1;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0)
+  );
 }
 
 .categoryBadge {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: #9333ea;
-  color: white;
+  top: 0.75rem;
+  left: 0.75rem;
+  background: var(--theme-primary-start);
+  color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
-.actionButtons {
+.actions {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 0.75rem;
+  right: 0.75rem;
   display: flex;
   gap: 0.5rem;
-  opacity: 0;
-  transition: opacity 300ms ease;
 }
 
-.projectCard:hover .actionButtons {
-  opacity: 1;
-}
-
-.actionButton {
+.iconBtn {
+  background: var(--theme-primary-end);
+  color: #fff;
   padding: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 9999px;
-  backdrop-filter: blur(4px);
-  transition: all 200ms ease;
-  color: #1f2937;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.2s ease;
 }
 
-.actionButton:hover {
-  background-color: white;
-}
-
-.actionIcon {
-  width: 1.25rem;
-  height: 1.25rem;
+.iconBtn:hover {
+  background: var(--theme-secondary-start);
 }
 
 .content {
   padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .projectTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.75rem;
-  transition: color 300ms ease;
+  margin-bottom: 0.5rem;
+  color: var(--theme-text);
 }
 
-.projectCard:hover .projectTitle {
-  color: #9333ea;
+.description {
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--theme-text);
+  line-height: 1.6;
 }
 
-.projectDescription {
-  color: #4b5563;
-  margin-bottom: 1rem;
-  line-height: 1.625;
-}
-
-.technologiesContainer {
+.techList {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 1rem;
 }
 
-.technologyTag {
+.techTag {
+  background: var(--theme-secondary-start);
+  color: #fff;
   padding: 0.25rem 0.75rem;
-  background: linear-gradient(to right, #f3e8ff, #fce7f3);
-  color: #7c3aed;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  transform: scale(1);
-  transition: transform 200ms ease;
-}
-
-.technologyTag:hover {
-  transform: scale(1.05);
-}
-
-.viewMoreContainer {
-  text-align: center;
-  margin-top: 3rem;
-}
-
-.viewMoreButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(to right, #9333ea, #ec4899);
-  color: white;
-  border-radius: 0.75rem;
-  font-weight: 500;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  transition: all 300ms ease;
-  border: none;
-  cursor: pointer;
-  transform: scale(1);
-}
-
-.viewMoreButton:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.viewMoreIcon {
-  width: 1.25rem;
-  height: 1.25rem;
 }
