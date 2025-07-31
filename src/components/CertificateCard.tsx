@@ -1,5 +1,5 @@
-// CertificateCard.tsx
 import React from 'react';
+import { ExternalLink, CalendarDays, Award } from 'lucide-react';
 
 interface CertificateCardProps {
   id: string;
@@ -11,23 +11,38 @@ interface CertificateCardProps {
   imageUrl: string;
 }
 
-const CertificateCard = ({ id, title, issuer, year, skills, pdfUrl, imageUrl }: CertificateCardProps) => {
+const CertificateCard = ({
+  id,
+  title,
+  issuer,
+  year,
+  skills,
+  pdfUrl,
+  imageUrl,
+}: CertificateCardProps) => {
   return (
     <div className="certificate-card">
       <div className="image-container">
         <img src={imageUrl} alt={title} className="certificate-image" />
         <span className="certificate-id">ID: {id}</span>
+        <span className="certificate-check">✔</span>
       </div>
       <div className="certificate-body">
-        <h3>{title}</h3>
-        <p className="certificate-issuer">🏅 {issuer}</p>
-        <p className="certificate-year">📅 {year}</p>
+        <div className="certificate-title-row">
+          <h3 className="certificate-title">{title}</h3>
+          <a href={pdfUrl} target="_blank" rel="noopener noreferrer" title="Ver certificado">
+            <ExternalLink size={16} />
+          </a>
+        </div>
+        <div className="certificate-meta">
+          <div className="certificate-row"><Award size={14} /> {issuer}</div>
+          <div className="certificate-row"><CalendarDays size={14} /> {year}</div>
+        </div>
         <div className="skills-container">
-          {skills.map((skill, idx) => (
-            <span key={idx} className="skill-badge">{skill}</span>
+          {skills.map((skill, i) => (
+            <span key={i} className="skill-badge">{skill}</span>
           ))}
         </div>
-        <a href={pdfUrl} target="_blank" rel="noopener noreferrer">Ver certificado ↗</a>
       </div>
     </div>
   );

@@ -160,3 +160,16 @@
   border-radius: 12px;
   height: 200px;
 }
+@media (max-width: 768px) {
+  .contentGrid {
+    grid-template-columns: 1fr; 
+  }
+
+  .skillsContainer {
+    margin-top: 0; 
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr; 
+  }
+}

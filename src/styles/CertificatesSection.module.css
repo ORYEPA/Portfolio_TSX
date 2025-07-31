@@ -1,275 +1,94 @@
-.section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(to bottom right, #fef3c7, #fed7aa, #fef3c7);
-}
-
-.container {
-  max-width: 80rem;
-  margin: 0 auto;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  background: linear-gradient(to right, #ea580c, #dc2626);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 3.75rem;
-  }
-}
-
-.description {
-  font-size: 1.125rem;
-  color: #374151;
-  max-width: 42rem;
-  margin: 0 auto;
-}
-
-.certificatesGrid {
+/* grid de cards */
+.grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
-  margin-bottom: 4rem;
 }
 
-@media (min-width: 768px) {
-  .certificatesGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1024px) {
-  .certificatesGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.certificateCard {
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+/* card container */
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
-  transform: scale(1);
-  transition: all 500ms ease;
-  border: 1px solid #f3f4f6;
-  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header de la card */
+.cardHeader {
   position: relative;
+  height: 140px;
+  background: linear-gradient(135deg, #f0f0f0, #cccccc);
 }
 
-.certificateCard:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-.imageContainer {
-  position: relative;
-  overflow: hidden;
-  height: 10rem;
-}
-
-.certificateImage {
+/* imagen de header (si tienes) */
+.headerImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1);
-  transition: transform 500ms ease;
 }
 
-.certificateCard:hover .certificateImage {
-  transform: scale(1.1);
-}
-
-.imageOverlay {
+/* badge del ID */
+.idBadge {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
-}
-
-.verifiedBadge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: #10b981;
-  color: white;
-  padding: 0.5rem;
-  border-radius: 9999px;
-}
-
-.verifiedIcon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.credentialId {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  right: 1rem;
-  color: white;
+  bottom: 8px;
+  left: 12px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
   font-size: 0.75rem;
-  font-weight: 500;
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
-.content {
-  padding: 1.5rem;
+/* icono de check */
+.checkIcon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  color: #4caf50;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.contentHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.certificateTitle {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-  line-height: 1.25;
-  transition: color 300ms ease;
+/* cuerpo de la card */
+.cardBody {
+  padding: 1rem;
   flex: 1;
 }
 
-.certificateCard:hover .certificateTitle {
-  color: #ea580c;
+/* título */
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
 }
 
-.externalButton {
-  padding: 0.5rem;
-  color: #9ca3af;
-  transition: color 200ms ease;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-.externalButton:hover {
-  color: #ea580c;
-}
-
-.externalIcon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.issuerInfo {
+/* fila de issuer/date */
+.meta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.issuerIcon {
-  width: 1rem;
-  height: 1rem;
-  color: #ea580c;
-}
-
-.issuerName {
   font-size: 0.875rem;
-  color: #4b5563;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+.meta svg {
+  margin-right: 0.25rem;
 }
 
-.dateInfo {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.dateIcon {
-  width: 1rem;
-  height: 1rem;
-  color: #9ca3af;
-}
-
-.dateText {
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.skillsSection {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.skillsLabel {
-  font-size: 0.75rem;
-  color: #6b7280;
-  font-weight: 500;
-}
-
-.skillsContainer {
+/* badges de skills */
+.badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
-
-.skillTag {
-  padding: 0.25rem 0.5rem;
-  color: white;
-  border-radius: 9999px;
+.badge {
+  background: #e0e0e0;
+  color: #333;
   font-size: 0.75rem;
-  font-weight: 500;
-  transform: scale(1);
-  transition: transform 200ms ease;
-}
-
-.skillTag:hover {
-  transform: scale(1.05);
-}
-
-.borderEffect {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border: 2px solid transparent;
-  background: linear-gradient(to right, #fb923c, #ef4444, #ec4899);
-  border-radius: 1rem;
-  opacity: 0;
-  transition: opacity 300ms ease;
-  pointer-events: none;
-}
-
-.certificateCard:hover .borderEffect {
-  opacity: 0.2;
-}
-
-.floatingElements {
-  position: relative;
-  margin-top: 4rem;
-  height: 8rem;
-  overflow: hidden;
-}
-
-.floatingElement {
-  position: absolute;
-  pointer-events: none;
-}
-
-.floatingIcon {
-  width: 2rem;
-  height: 2rem;
-  color: #fb923c;
+  padding: 4px 8px;
+  border-radius: 12px;
 }
