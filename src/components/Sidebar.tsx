@@ -23,10 +23,10 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:hello@example.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/ORYEPA', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/andrea-peyro/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/Aid3nnS?t=8qQofzGAwh4jkRw34Mn8Qg&s=09', label: 'Twitter' },
+    { icon: Mail, href: 'andreaelenapeyro@gmail.com', label: 'Email' },
   ];
 
   return (
@@ -51,7 +51,7 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
           <p className={styles.title}>Full Stack Developer</p>
         </motion.div>
 
-        {/* Navigation */}
+       
         <nav className={styles.navigation}>
           <div className={styles.navList}>
             {menuItems.map((item, index) => {

@@ -85,7 +85,7 @@ function HomeContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
         <section id="projects"><ProjectsSection /></section>
-        <section id="certificates"> <CertificatesGrid limit={9} /></section>
+        <section id="certificates"> <CertificatesGrid limit={11} /></section>
         {/* <section id="notes"><NotesSection /></section>
         <section id="random"><RandomSection /></section> */}
       </main>
