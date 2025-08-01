@@ -2,9 +2,7 @@
 
 .section {
   padding: 4rem 2rem;
-  /* Hacemos el fondo de sección más oscuro */
   background: var(--theme-bg);
-  /* y le ponemos un ligero overlay en negro para profundizar el tono */
   position: relative;
 }
 
@@ -21,7 +19,7 @@
 
 .container {
   position: relative;
-  z-index: 1; /* para que el contenido esté por encima del overlay */
+  z-index: 1; 
   max-width: 1200px;
   margin: 0 auto;
 }

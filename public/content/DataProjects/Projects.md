@@ -53,4 +53,18 @@ projects:
     github: "https://github.com/ORYEPA/CatAdoptionReact"
     demo: "https://master--superb-pixie-63b1d7.netlify.app"
     category: "Web Application"
+
+  - title: "GUI for cardiac signal processing"
+    description: >
+      The fundamental purpose of this project is to carry out an exhaustive
+      analysis of cardiac signals. This study aims to deepen the understanding
+      of the characteristics and behaviors of these signals, with the objective
+      of advancing the diagnosis and monitoring of cardiac conditions by means
+      of precision technical and analytical methods.
+    technologies:
+      - "Matlab"
+    image: "/images/projects/ecg_gui.jpg"
+    github: "https://github.com/ORYEPA/GUI-for-cardiac-signal-processing/tree/main"
+    demo: ""
+    category: "Desktop Application"
 ---

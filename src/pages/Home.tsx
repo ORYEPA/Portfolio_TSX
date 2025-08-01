@@ -4,7 +4,6 @@ import { Sidebar } from '../components/Sidebar';
 import { HeroSection } from '../components/HeroSection';
 import { AboutSection } from '../components/AboutSection';
 import { ProjectsSection } from '../components/ProjectsSection';
-import { CertificatesSection } from '../components/CertificatesSection';
 import { NotesSection } from '../components/NotesSection';
 import { RandomSection } from '../components/RandomSection';
 import { ThemeProvider } from '../contexts/ThemeProvider';
@@ -19,14 +18,12 @@ function HomeContent() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Scroll to a section and close mobile menu
   const scrollToSection = (id: string) => {
     setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     setIsMobileMenuOpen(false);
   };
 
-  // Scroll-spy to update activeSection
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'certificates', 'notes', 'random'];
@@ -85,7 +82,7 @@ function HomeContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
         <section id="projects"><ProjectsSection /></section>
-        <section id="certificates"> <CertificatesGrid limit={11} /></section>
+        <section id="certificates"> <CertificatesGrid limit={10} /></section>
         {/* <section id="notes"><NotesSection /></section>
         <section id="random"><RandomSection /></section> */}
       </main>
