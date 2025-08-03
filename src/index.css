@@ -22,7 +22,12 @@ code {
   --theme-primary-end:      var(--theme-secondary);
   --theme-secondary-start:  var(--theme-secondary);
   --theme-secondary-end:    var(--theme-hover);
-  --theme-card-bg:          #2E2A2F; /* Más claro que el fondo oscuro */
+  --theme-card-bg:          #2E2A2F;
+  --theme-progress-0: #fbbf24; /* amarillo */
+  --theme-progress-1: #60a5fa; /* azul */
+  --theme-progress-2: #34d399; /* verde */
+  --theme-progress-3: #818cf8; /* indigo */
+  --theme-progress-4: #f472b6; /* rosa */
 }
 
 /* Tema: Twilight */

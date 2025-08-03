@@ -8,7 +8,7 @@ import { NotesSection } from '../components/NotesSection';
 import { RandomSection } from '../components/RandomSection';
 import { ThemeProvider } from '../contexts/ThemeProvider';
 import { ThemeSelector } from '../components/ThemeSelector';
-import CertificatesGrid from '../components/CertificatesGrid';
+import CertificatesOverview from '../components/CertificatesOverview';
 
 import { Menu, X } from 'lucide-react';
 import styles from '../styles/Home.module.css';  
@@ -82,7 +82,7 @@ function HomeContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
         <section id="projects"><ProjectsSection /></section>
-        <section id="certificates"> <CertificatesGrid limit={10} /></section>
+        <section id="certificates"> <CertificatesOverview /></section>
         {/* <section id="notes"><NotesSection /></section>
         <section id="random"><RandomSection /></section> */}
       </main>
