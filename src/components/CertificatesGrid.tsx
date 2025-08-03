@@ -31,11 +31,11 @@ const CertificatesGrid = ({ limit = Infinity }: CertificatesGridProps) => {
 
 
       <div className={styles["certificates-container"]}>
-      <h2 className={styles.title}>Certificates</h2>
+      {/* <h2 className={styles.title}>Certificates</h2>
       <p className={styles.subtitle}>
         Professional certifications that validate my technical expertise and
         commitment to continuous learning.
-      </p>
+      </p> */}
 
       <div className={styles["certificates-grid"]}>
         {certificates.slice(0, limit).map((cert, index) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExternalLink, CalendarDays, Award } from 'lucide-react';
-import styles from '../styles/CertificatesGrid.module.css'; // 👈 importante
+import styles from '../styles/CertificatesGrid.module.css'; 
 
 interface CertificateCardProps {
   id: string;
