@@ -1,39 +1,34 @@
 import { useEffect, useState } from 'react';
 import { fetchNotes, NoteMeta } from '../services/notionService';
-import NoteCard from './NoteCard';
 import styles from '../styles/NotesSection.module.css';
+import NoteCard from '../components/NoteCard';
 
-export function NotesSection() {
+export default function NotesPage() {
   const [notes, setNotes] = useState<NoteMeta[]>([]);
-  const [filter, setFilter] = useState<string>('All');
+  const [filter, setFilter] = useState('All');
 
   useEffect(() => {
-    fetchNotes()
-      .then(setNotes)
-      .catch(err => console.error('Error fetching notes:', err));
+    fetchNotes().then(setNotes).catch(console.error);
   }, []);
 
-  // extrae categorías únicas y construye resumen
   const categories = Array.from(new Set(notes.map(n => n.category)));
   const summary = [
-    { label: 'All',   count: notes.length },
-    ...categories.map(cat => ({
-      label: cat,
-      count: notes.filter(n => n.category === cat).length
+    { label: 'All', count: notes.length },
+    ...categories.map(c => ({
+      label: c,
+      count: notes.filter(n => n.category === c).length
     }))
   ];
 
-  // filtra según la categoría seleccionada
-  const displayed =
-    filter === 'All' ? notes : notes.filter(n => n.category === filter);
+  const displayed = filter === 'All'
+    ? notes
+    : notes.filter(n => n.category === filter);
 
   return (
     <section className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Notes &amp; Thoughts</h1>
-        <p className={styles.subtitle}>
-          Random thoughts, insights, and learnings from my journey as a developer.
-        </p>
+        <h1>Notes &amp; Thoughts</h1>
+        <p>Random thoughts, insights, and learnings from my journey as a developer.</p>
       </header>
 
       <div className={styles.summary}>
@@ -41,7 +36,7 @@ export function NotesSection() {
           <div
             key={s.label}
             className={styles.summaryCard}
-            onClick={() => setFilter(s.label)}
+            onClick={()=>setFilter(s.label)}
             style={{ opacity: filter === s.label ? 1 : 0.6 }}
           >
             <div className={styles.count}>{s.count}</div>
@@ -51,8 +46,8 @@ export function NotesSection() {
       </div>
 
       <div className={styles.grid}>
-        {displayed.map(note => (
-          <NoteCard key={note.id} note={note} />
+        {displayed.map(n => (
+          <NoteCard key={n.id} note={n} />
         ))}
       </div>
     </section>

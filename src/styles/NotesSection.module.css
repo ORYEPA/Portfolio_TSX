@@ -1,0 +1,46 @@
+.container {
+  padding: 4rem 2rem;
+  background: #f0f4ff;
+}
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.header h1 {
+  font-size: 2.5rem;
+  color: #1a237e;
+}
+.header p {
+  color: #3c4b64;
+  margin-top: 0.5rem;
+}
+.summary {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.summaryCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: opacity 0.2s;
+}
+.count {
+  font-size: 1.5rem;
+  color: #1a237e;
+  font-weight: bold;
+}
+.label {
+  font-size: 0.875rem;
+  color: #3c4b64;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  gap: 2rem;
+}

@@ -1,3 +1,4 @@
+// src/pages/Home.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sidebar } from '../components/Sidebar';
@@ -12,7 +13,6 @@ import CertificatesOverview from '../components/CertificatesOverview';
 
 import { Menu, X } from 'lucide-react';
 import styles from '../styles/Home.module.css';  
-
 
 function HomeContent() {
   const [activeSection, setActiveSection] = useState('home');
@@ -82,9 +82,10 @@ function HomeContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
         <section id="projects"><ProjectsSection /></section>
-        <section id="certificates"> <CertificatesOverview /></section>
-        {/* <section id="notes"><NotesSection /></section>
-        <section id="random"><RandomSection /></section> */}
+        <section id="certificates"><CertificatesOverview /></section>
+        <section id="notes"><NotesSection /></section>
+
+        {/* <section id="random"><RandomSection /></section> */}
       </main>
     </div>
   );
