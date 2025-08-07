@@ -1,32 +1,7 @@
-import { useEffect, useState } from 'react';
-import { fetchNotes, NoteMeta } from '../services/notionService';
-import NoteCard from './NoteCard';
+import React from 'react';
 import styles from '../styles/NotesSection.module.css';
 
 export function NotesSection() {
-  const [notes, setNotes] = useState<NoteMeta[]>([]);
-  const [filter, setFilter] = useState<string>('All');
-
-  useEffect(() => {
-    fetchNotes()
-      .then(setNotes)
-      .catch(err => console.error('Error fetching notes:', err));
-  }, []);
-
-  // extrae categorías únicas y construye resumen
-  const categories = Array.from(new Set(notes.map(n => n.category)));
-  const summary = [
-    { label: 'All',   count: notes.length },
-    ...categories.map(cat => ({
-      label: cat,
-      count: notes.filter(n => n.category === cat).length
-    }))
-  ];
-
-  // filtra según la categoría seleccionada
-  const displayed =
-    filter === 'All' ? notes : notes.filter(n => n.category === filter);
-
   return (
     <section className={styles.container}>
       <header className={styles.header}>
@@ -36,24 +11,15 @@ export function NotesSection() {
         </p>
       </header>
 
-      <div className={styles.summary}>
-        {summary.map(s => (
-          <div
-            key={s.label}
-            className={styles.summaryCard}
-            onClick={() => setFilter(s.label)}
-            style={{ opacity: filter === s.label ? 1 : 0.6 }}
-          >
-            <div className={styles.count}>{s.count}</div>
-            <div className={styles.label}>{s.label}</div>
-          </div>
-        ))}
-      </div>
-
-      <div className={styles.grid}>
-        {displayed.map(note => (
-          <NoteCard key={note.id} note={note} />
-        ))}
+      <div className={styles.iframeWrapper}>
+        <iframe
+          src="https://aidenn.notion.site/ebd/2489baff500780808bb1f17f9994b31a?v=2489baff500780bf8fd6000cc7dc9fc0"
+          width="100%"
+          height="600"
+          frameBorder="0"
+          allowFullScreen
+          title="Embedded Notion Notes"
+        />
       </div>
     </section>
   );
