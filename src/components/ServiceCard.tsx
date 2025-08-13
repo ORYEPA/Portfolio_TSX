@@ -1,5 +1,5 @@
-// src/components/ServiceCard.tsx
 import { CheckCircle, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";                 // 👈 nuevo
 import styles from "../styles/ServiceCard.module.css";
 import { Service } from "../services/loadServices";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,14 @@ export default function ServiceCard({ service }: Props) {
   const navigate = useNavigate();
 
   return (
-    <article className={`${styles.card} ${styles.gradient}`} data-gradient={service.color}>
-      {/* Badge "Most Popular" */}
+    <motion.article
+      className={`${styles.card} ${styles.gradient}`}
+      data-gradient={service.color}
+      // 👇 micro‑interacciones
+      whileHover={{ y: -6, rotateX: 1, rotateY: -1 }}
+      whileTap={{ scale: 0.985 }}
+      transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
+    >
       {service.popular && <span className={styles.badge}>Most Popular</span>}
 
       <header className={styles.header}>
@@ -40,10 +46,12 @@ export default function ServiceCard({ service }: Props) {
 
       <button
         className={styles.cta}
-        onClick={() => navigate(`/get-started?service=${encodeURIComponent(service.slug)}`)}
+        onClick={() =>
+          navigate(`/get-started?service=${encodeURIComponent(service.slug)}`)
+        }
       >
         Get Started <ArrowRight size={16} />
       </button>
-    </article>
+    </motion.article>
   );
 }

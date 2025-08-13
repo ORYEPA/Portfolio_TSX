@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { loadServices, Service } from "../services/loadServices";
 import ServiceCard from "./ServiceCard";
 import styles from "../styles/ServicesSection.module.css";
+import MyProcessSection from "./ProcessSection";
 
 export default function ServicesSection() {
   const [services, setServices] = useState<Service[]>([]);
@@ -32,6 +33,9 @@ export default function ServicesSection() {
           <ServiceCard key={s.slug} service={s} />
         ))}
       </div>
+
+        <MyProcessSection />
+
     </section>
   );
 }
