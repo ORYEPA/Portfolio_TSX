@@ -165,4 +165,22 @@
 }
 
 
+.backButton {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: var(--theme-navbar);
+  color: var(--theme-text);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+
+.backButton:hover {
+  background: var(--theme-hover);
+}
 
