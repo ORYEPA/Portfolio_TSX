@@ -18,6 +18,8 @@ export default function GetStarted() {
   return (
     <section className={styles.section}>
       <div className={styles.card}>
+        <h1 className={styles.title}>In process</h1>
+
         <h2 className={styles.title}>Get Started</h2>
         <p className={styles.subtitle}>
           Tell me about your idea. I’ll get back to you shortly.
