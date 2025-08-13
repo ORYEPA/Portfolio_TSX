@@ -1,0 +1,84 @@
+.section {
+  padding: 3rem 1rem;
+  background: var(--theme-bg, #1a1b22);
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: min(780px, 100%);
+  background: var(--theme-card-bg, #262732);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+}
+
+.title {
+  color: var(--theme-text, #e5dbff);
+  font-weight: 800;
+  font-size: 1.6rem;
+}
+
+.subtitle {
+  margin-top: .3rem;
+  color: rgba(255,255,255,.75);
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  gap: .45rem;
+}
+
+.rowInline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .85rem;
+}
+
+label {
+  color: rgba(255,255,255,.85);
+  font-size: .9rem;
+}
+
+input, textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #fff;
+  border-radius: 12px;
+  padding: .75rem .9rem;
+  outline: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(255,255,255,.55);
+}
+
+input:focus, textarea:focus {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08);
+}
+
+.submit {
+  justify-self: start;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.28);
+  color: var(--theme-text, #e5dbff);
+  padding: .7rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .rowInline { grid-template-columns: 1fr; }
+}

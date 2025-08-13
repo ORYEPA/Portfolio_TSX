@@ -1,4 +1,4 @@
-import { Home, User, GraduationCap, Briefcase, FolderOpen, Award, StickyNote, Sparkles, Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Home, User, GraduationCap, Briefcase, FolderOpen, Award, StickyNote, Sparkles, Github, Linkedin, Twitter, Mail, Wrench } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useTheme } from '../contexts/ThemeProvider';
 import styles from '../styles/SideBar.module.css';
@@ -14,6 +14,7 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
   const menuItems = [
     { id: 'home', label: 'Home', icon: Home },
     { id: 'about', label: 'About me', icon: User },
+    { id: 'services', label: 'Services', icon: Wrench },
     { id: 'education', label: 'Education', icon: GraduationCap },
     { id: 'experience', label: 'Experience', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: FolderOpen },
