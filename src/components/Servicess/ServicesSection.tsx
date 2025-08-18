@@ -1,6 +1,5 @@
-// src/components/ServicesSection.tsx
 import { useEffect, useState } from "react";
-import { loadServices, Service } from "../services/loadServices";
+import { loadServices, Service } from "../../services/loadServices";
 import ServiceCard from "./ServiceCard";
 import styles from "../styles/ServicesSection.module.css";
 import MyProcessSection from "./ProcessSection";

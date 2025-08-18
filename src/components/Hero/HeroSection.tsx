@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import fm from 'front-matter'
 import { ChevronDown, Code, Cpu, Database } from 'lucide-react'
-import { useTheme } from '../contexts/ThemeProvider'
+import { useTheme } from '../../contexts/ThemeProvider'
 import styles from '../styles/HeroSection.module.css'
 
 type FrontMatter = {

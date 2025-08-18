@@ -1,7 +1,7 @@
 import { CheckCircle, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";                 // 👈 nuevo
+import { motion } from "framer-motion";                
 import styles from "../styles/ServiceCard.module.css";
-import { Service } from "../services/loadServices";
+import { Service } from "../../services/loadServices";
 import { useNavigate } from "react-router-dom";
 
 type Props = { service: Service };
@@ -13,7 +13,6 @@ export default function ServiceCard({ service }: Props) {
     <motion.article
       className={`${styles.card} ${styles.gradient}`}
       data-gradient={service.color}
-      // 👇 micro‑interacciones
       whileHover={{ y: -6, rotateX: 1, rotateY: -1 }}
       whileTap={{ scale: 0.985 }}
       transition={{ type: "spring", stiffness: 320, damping: 22, mass: 0.6 }}
