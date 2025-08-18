@@ -55,7 +55,7 @@ html.theme-sunset {
   --theme-primary-end:      var(--theme-secondary);
   --theme-secondary-start:  var(--theme-secondary);
   --theme-secondary-end:    var(--theme-hover);
-  --theme-card-bg:          #5E4A66; /* Tonalidad más clara */
+  --theme-card-bg:          #5E4A66; 
 }
 
 /* Tema: Earthen */
@@ -69,10 +69,9 @@ html.theme-earthen {
   --theme-primary-end:      var(--theme-secondary);
   --theme-secondary-start:  var(--theme-secondary);
   --theme-secondary-end:    var(--theme-hover);
-  --theme-card-bg:          #6AB86A; /* Ligeramente más claro que el fondo */
+  --theme-card-bg:          #6AB86A; 
 }
 
-/* Reset básico */
 body {
   margin: 0;
   background-color: var(--theme-bg);
