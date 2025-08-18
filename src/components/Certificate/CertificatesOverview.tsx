@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCertificates, Certificate } from '../services/certificates';
+import { fetchCertificates, Certificate } from '../../services/certificates';
 import CertificatesGrid from './CertificatesGrid';
 import { useNavigate } from 'react-router-dom';
-import styles from '../styles/CertificatesOverview.module.css';
+import styles from '../../styles/CertificatesOverview.module.css';
 
 const CertificatesOverview = () => {
   const [certificates, setCertificates] = useState<Certificate[]>([]);

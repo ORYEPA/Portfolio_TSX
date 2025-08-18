@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import CertificateCard from './CertificateCard';
-import { fetchCertificates, Certificate } from '../services/certificates';
+import { fetchCertificates, Certificate } from '../../services/certificates';
 import { useNavigate, useLocation } from 'react-router-dom';
-import styles from '../styles/CertificatesGrid.module.css';
+import styles from '../../styles/CertificatesGrid.module.css';
 
 interface CertificatesGridProps {
   limit?: number;

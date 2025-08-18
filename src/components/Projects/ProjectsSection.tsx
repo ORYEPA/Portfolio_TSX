@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import fm from 'front-matter'
 import { ExternalLink, Github } from 'lucide-react'
-import styles from '../styles/ProjectsSection.module.css'
+import styles from '../../styles/ProjectsSection.module.css'
 
 type Project = {
   title: string

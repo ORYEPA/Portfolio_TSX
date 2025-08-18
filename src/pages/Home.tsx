@@ -2,15 +2,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sidebar } from '../components/Sidebar';
-import { HeroSection } from '../components/HeroSection';
-import { AboutSection } from '../components/AboutSection';
-import { ProjectsSection } from '../components/ProjectsSection';
-import ServicesSection from '../components/ServicesSection';   // 👈 NEW
+import { HeroSection } from '../components/Hero/HeroSection';
+import { AboutSection } from '../components/Aboutme/AboutSection';
+import { ProjectsSection } from '../components/Projects/ProjectsSection';
+import ServicesSection from '../components/Servicess/ServicesSection';   
 import { NotesSection } from '../components/NotesSection';
 import { RandomSection } from '../components/RandomSection';
 import { ThemeProvider } from '../contexts/ThemeProvider';
 import { ThemeSelector } from '../components/ThemeSelector';
-import CertificatesOverview from '../components/CertificatesOverview';
+import CertificatesOverview from '../components//Certificate/CertificatesOverview';
 
 import { Menu, X } from 'lucide-react';
 import styles from '../styles/Home.module.css';
@@ -27,7 +27,6 @@ function HomeContent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 👇 incluye 'services' en el scroll-spy
       const sections = ['home', 'about', 'projects', 'services', 'certificates', 'notes', 'random'];
       const pos = window.scrollY + 120;
       for (const id of sections) {
