@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import styles from "../styles/MyProcessSection.module.css";
+import styles from "../../styles/MyProcessSection.module.css";
 import { Search, CalendarRange, Code2, CheckCheck, Rocket } from "lucide-react";
 
 const steps = [

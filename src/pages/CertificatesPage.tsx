@@ -1,5 +1,5 @@
 import React from 'react';
-import CertificatesGrid from '../components/CertificatesOverview';
+import CertificatesGrid from '../components/Certificate/CertificatesOverview';
 
 const CertificatesPage = () => (
   <div>

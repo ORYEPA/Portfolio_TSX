@@ -1,6 +1,6 @@
 import { CheckCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";                
-import styles from "../styles/ServiceCard.module.css";
+import styles from "../../styles/ServiceCard.module.css";
 import { Service } from "../../services/loadServices";
 import { useNavigate } from "react-router-dom";
 

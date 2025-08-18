@@ -1,4 +1,3 @@
-// src/components/AboutSection.tsx
 import React, { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import ReactMarkdown from 'react-markdown'
@@ -6,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import fm from 'front-matter'
 import { Code, Award, User, Coffee } from 'lucide-react'
 
-import styles from '../styles/AboutSection.module.css'
+import styles from '../../styles/AboutSection.module.css'
 
 type StatsItem  = { icon: string; number: string; label: string }
 type SkillItem  = { name: string; percent: number; slug: string }
