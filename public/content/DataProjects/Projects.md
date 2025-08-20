@@ -1,5 +1,25 @@
 ---
 projects:
+
+
+  - title: "Chatbot WhatsApp + IA (n8n)"
+    description: >
+      Workflow in n8n that integrates the official WhatsApp API with OpenAI, 
+      Gmail, Google Calendar, and Notion. It allows you to receive text messages,
+      audio, images, and PDF documents, process them with artificial intelligence, 
+      and respond automatically with text or audio. In addition, you can view 
+      and update information in Gmail, Calendar, and Notion databases for productivity 
+      and financial management tasks.
+
+    technologies:
+      - "n8n"
+      - "Node.js"
+      - "IA"
+    image: "/images/projects/chatbot.jpg"
+    github: "https://github.com/ORYEPA"   
+    demo: ""
+    category: "Automation / AI Assistant"
+
   - title: "CNN Classifications"
     description: >
       Advanced medical image classification system using Convolutional Neural Networks
@@ -7,8 +27,6 @@ projects:
     technologies:
       - "Python"
       - "TensorFlow"
-      - "React"
-      - "Node.js"
     image: "/images/projects/cnn.jpg"
     github: "https://github.com/ORYEPA/CNNrespiratory"
     demo: ""
@@ -67,4 +85,9 @@ projects:
     github: "https://github.com/ORYEPA/GUI-for-cardiac-signal-processing/tree/main"
     demo: ""
     category: "Desktop Application"
+
+
+  
+  
 ---
+
