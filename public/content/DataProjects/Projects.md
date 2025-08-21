@@ -16,7 +16,7 @@ projects:
       - "Node.js"
       - "IA"
     image: "/images/projects/chatbot.jpg"
-    github: "https://github.com/ORYEPA"   
+    github: "https://github.com/ORYEPA/Chatbot-n8n"   
     demo: ""
     category: "Automation / AI Assistant"
 
