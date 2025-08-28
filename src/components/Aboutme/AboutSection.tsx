@@ -106,7 +106,6 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Approach Full Width */}
         <div className={styles.approachFull}>
           <h3 className={styles.approachTitle}>My Approach</h3>
           <ReactMarkdown

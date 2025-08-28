@@ -11,7 +11,7 @@ stats:
     number: "3+"
     label: "Years Experience"
   - icon: Award
-    number: "5+"
+    number: "6+"
     label: "Projects Completed"
   - icon: User
     number: "2+"
@@ -44,6 +44,9 @@ skills:
   - name: "Git"
     percent: 92
     slug: "git"
+  - name: "Python"
+    percent: 98
+    slug: "python"
 approach: |
   I believe in combining **solid technical skills** with **creative problem-solving**.
   My experience spans both corporate environments and freelance projects,

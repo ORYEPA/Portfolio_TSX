@@ -29,7 +29,6 @@ export function HeroSection() {
       .catch(err => console.error(err))
   }, [])
 
-  // background según tema
   const getHeroBackground = () => {
     switch (currentTheme) {
       case 'twilight': return { background: 'linear-gradient(135deg, #0f172a, #581c87, #1e293b)' }
@@ -46,7 +45,6 @@ export function HeroSection() {
   return (
     <section className={styles.hero} style={getHeroBackground()}>
       <div className={styles.content}>
-        {/* Títulos */}
         <motion.div
           className={styles.headerSection}
           initial={{ y: 100, opacity: 0 }}
@@ -71,7 +69,6 @@ export function HeroSection() {
           </motion.h2>
         </motion.div>
 
-        {/* Intro sacado del front-matter.header */}
         <motion.div
           className={styles.introSection}
           initial={{ y: 50, opacity: 0 }}
@@ -85,7 +82,6 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Tres tarjetas: Frontend, Backend, Database */}
         <motion.div
           className={styles.cardGrid}
           initial={{ y: 100, opacity: 0 }}
@@ -106,7 +102,6 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Indicador de scroll */}
         <motion.div
           className={styles.scrollIndicator}
           initial={{ opacity: 0 }}
