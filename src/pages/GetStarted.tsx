@@ -8,8 +8,8 @@ import {
 import styles from "../styles/GetStarted.module.css";
 import Card from "../components/Getstarted/GetStartCard";
 import Field from "../components/Getstarted/Field";
-import ThemedDatePicker from "../components/Getstarted/DatePicker"; // <- tu picker con estética
-import ThemedTimePicker from "../components/Getstarted/TimePicker"; // <- tu picker con estética
+import ThemedDatePicker from "../components/Getstarted/DatePicker";
+import ThemedTimePicker from "../components/Getstarted/TimePicker";
 import ChipToggle from "../components/Getstarted/ChipToggle";
 import FeatureStrip from "../components/Getstarted/FeatureStrip";
 
@@ -90,16 +90,16 @@ export default function GetStarted() {
   const [sending, setSending] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
 
-  // ⬇️ ESTADO DE LOS NUEVOS PICKERS (dentro del componente)
-  const [fechaISO, setFechaISO] = useState<string>("");    // yyyy-MM-dd
-  const [horaHHMM, setHoraHHMM] = useState<string>("");    // HH:mm
+  // Themed pickers (controlled)
+  const [fechaISO, setFechaISO] = useState<string>(""); // yyyy-MM-dd
+  const [horaHHMM, setHoraHHMM] = useState<string>(""); // HH:mm
 
   useEffect(() => {
     loadServices().then(setServices);
   }, []);
 
   const selected = services.find((s) => s.slug === serviceSlug);
-  const subjectDefault = selected?.title ?? "Primera consulta";
+  const subjectDefault = selected?.title ?? "Initial consultation";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -114,20 +114,20 @@ export default function GetStarted() {
 
     try {
       if (!p.email || !p.nombre) {
-        throw new Error("Faltan campos obligatorios.");
+        throw new Error("Missing required fields.");
       }
       if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
-        throw new Error("Faltan variables de entorno de EmailJS.");
+        throw new Error("EmailJS environment variables are missing.");
       }
 
-      // 1) Email hacia ti
+      // 1) Email to you (EmailJS)
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
         {
           from_name: `${p.nombre} ${p.apellidos || ""}`.trim(),
           from_email: p.email,
-          subject: p.subject || "Primera consulta",
+          subject: p.subject || "Initial consultation",
           company: p.empresa || "-",
           phone: p.telefono || "-",
           message: p.mensaje || "-",
@@ -139,7 +139,7 @@ export default function GetStarted() {
         PUBLIC_KEY
       );
 
-      // 2) Auto-respuesta (opcional)
+      // 2) Auto-reply (optional)
       if (AUTOREPLY_ID) {
         await emailjs.send(
           SERVICE_ID,
@@ -147,7 +147,7 @@ export default function GetStarted() {
           {
             to_name: p.nombre,
             to_email: p.email,
-            subject: p.subject || "Primera consulta",
+            subject: p.subject || "Initial consultation",
             selected_service: p.service || "-",
             preferred_date: p.fecha || "-",
             preferred_time: p.hora || "-",
@@ -156,22 +156,22 @@ export default function GetStarted() {
         );
       }
 
-      // 3) Agenda: .ics + Google (si hay fecha/hora)
+      // 3) Calendar: .ics + "Add to Google" (if date/time provided)
       if (p.fecha && p.hora) {
         const startLocal = new Date(`${p.fecha}T${p.hora}:00`);
         const endLocal = addMinutes(startLocal, 30);
 
         const ics = buildICS({
-          title: `Consulta: ${p.subject || "Primera consulta"}`,
+          title: `Consultation: ${p.subject || "Initial consultation"}`,
           description:
-            `Tipo: ${p.tipoReunion}\n` +
-            `Nombre: ${p.nombre} ${p.apellidos || ""}\n` +
+            `Meeting type: ${p.tipoReunion}\n` +
+            `Name: ${p.nombre} ${p.apellidos || ""}\n` +
             `Email: ${p.email}\n` +
-            `Empresa: ${p.empresa || "-"}\n` +
-            `Teléfono: ${p.telefono || "-"}\n` +
-            `Servicio: ${p.service || "-"}\n\n` +
-            `Mensaje:\n${p.mensaje || "-"}`,
-          location: p.tipoReunion === "inperson" ? "Por confirmar" : "Online",
+            `Company: ${p.empresa || "-"}\n` +
+            `Phone: ${p.telefono || "-"}\n` +
+            `Service: ${p.service || "-"}\n\n` +
+            `Message:\n${p.mensaje || "-"}`,
+          location: p.tipoReunion === "inperson" ? "To be confirmed" : "Online",
           start: new Date(startLocal.toUTCString()),
           end: new Date(endLocal.toUTCString()),
           organizerEmail: "andreaelenapeyro@gmail.com",
@@ -182,27 +182,27 @@ export default function GetStarted() {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "consulta.ics";
+        a.download = "consultation.ics";
         a.click();
         URL.revokeObjectURL(url);
 
         const gUrl = buildGoogleCalURL({
-          title: `Consulta: ${p.subject || "Primera consulta"}`,
-          details: "Creado desde el formulario del portfolio.",
+          title: `Consultation: ${p.subject || "Initial consultation"}`,
+          details: "Created from the portfolio form.",
           start: new Date(startLocal.toUTCString()),
           end: new Date(endLocal.toUTCString()),
-          location: p.tipoReunion === "inperson" ? "Por confirmar" : "Online",
+          location: p.tipoReunion === "inperson" ? "To be confirmed" : "Online",
         });
         window.open(gUrl, "_blank");
 
-        // (opcional) backend
+        // (Optional) your backend
         try {
           await fetch("/api/create-event", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              title: `Consulta: ${p.subject || "Primera consulta"}`,
-              description: `Cliente: ${p.nombre} ${p.apellidos || ""}\nCorreo: ${p.email}\n${p.mensaje || ""}`,
+              title: `Consultation: ${p.subject || "Initial consultation"}`,
+              description: `Client: ${p.nombre} ${p.apellidos || ""}\nEmail: ${p.email}\n${p.mensaje || ""}`,
               start: startLocal.toISOString(),
               end: endLocal.toISOString(),
               attendeeEmail: p.email,
@@ -210,12 +210,11 @@ export default function GetStarted() {
               meetingType: p.tipoReunion,
             }),
           });
-        } catch {/* ignora si no existe */}
+        } catch {/* ignore if not available */}
       }
 
       setNotice("Successfully sent! We’ll contact you shortly.");
       form.reset();
-      // también limpiamos los pickers visibles
       setFechaISO("");
       setHoraHHMM("");
     } catch (err) {
@@ -228,7 +227,7 @@ export default function GetStarted() {
 
   return (
     <section className={styles.section}>
-      {/* Botón superior volver */}
+      {/* Top back button */}
       <div className={styles.topActions}>
         <button
           type="button"
@@ -236,91 +235,91 @@ export default function GetStarted() {
           onClick={() => navigate("/")}
         >
           <span className={styles.backIcon}><ChevronLeft size={16} /></span>
-          <span>Volver al inicio</span>
+          <span>Back to home</span>
         </button>
       </div>
 
       <header className={styles.header}>
-        <h1 className={styles.h1}>Comencemos Juntos</h1>
+        <h1 className={styles.h1}>Let’s Get Started</h1>
         <p className={styles.lead}>
-          Completa el formulario y agenda una reunión gratuita para conocer cómo podemos ayudarte a alcanzar tus objetivos.
+          Fill out the form and book a free meeting to explore how we can help you reach your goals.
         </p>
       </header>
 
       <form className={styles.grid} onSubmit={onSubmit}>
-        {/* IZQUIERDA: Contacto */}
+        {/* LEFT: Contact */}
         <div className={styles.cardWrapContact}>
           <Card
-            title="Información de Contacto"
-            subtitle="Cuéntanos sobre ti y tu proyecto para personalizar nuestra conversación."
+            title="Contact information"
+            subtitle="Tell us about you and your project so we can tailor the conversation."
           >
             <div className={styles.twoCols}>
-              <Field label="Nombre" name="nombre" required placeholder="Tu nombre" icon={<User size={16} />} />
-              <Field label="Apellidos" name="apellidos" placeholder="Tus apellidos" />
+              <Field label="First name" name="nombre" required placeholder="Your first name" icon={<User size={16} />} />
+              <Field label="Last name" name="apellidos" placeholder="Your last name" />
             </div>
 
-            <Field label="Email Corporativo" name="email" type="email" required placeholder="tu.email@empresa.com" icon={<Mail size={16} />} />
-            <Field label="Empresa" name="empresa" placeholder="Nombre de tu empresa" icon={<Building2 size={16} />} />
-            <Field label="Teléfono" name="telefono" type="tel" placeholder="+52 XXX XXX XXXX" icon={<Phone size={16} />} />
+            <Field label="Work email" name="email" type="email" required placeholder="you@company.com" icon={<Mail size={16} />} />
+            <Field label="Company" name="empresa" placeholder="Your company" icon={<Building2 size={16} />} />
+            <Field label="Phone" name="telefono" type="tel" placeholder="+52 XXX XXX XXXX" icon={<Phone size={16} />} />
 
             <Field
-              label="Cuéntanos sobre tu proyecto"
+              label="Tell us about your project"
               name="mensaje"
               as="textarea"
               rows={5}
-              placeholder="Describe tu proyecto, objetivos, tecnologías que prefieres, presupuesto estimado…"
+              placeholder="Describe your project, goals, preferred technologies, estimated budget…"
               icon={<MessageSquare size={16} />}
             />
           </Card>
         </div>
 
-        {/* DERECHA: Agenda */}
+        {/* RIGHT: Scheduling */}
         <div className={styles.cardWrapAgenda}>
           <Card
-            title="Agenda tu Reunión Gratuita"
-            subtitle="Selecciona cuándo quieres que hablemos sobre tu proyecto."
+            title="Schedule your free meeting"
+            subtitle="Pick a date and time that works for you."
           >
-            {/* ⬇️ Pickers con estética propia (con inputs hidden `name=fecha` y `name=hora`) */}
+            {/* Themed pickers (include hidden inputs name=fecha/hora) */}
             <ThemedDatePicker
-              label="Fecha Preferida"
+              label="Preferred date"
               name="fecha"
               value={fechaISO}
               onChange={setFechaISO}
             />
             <ThemedTimePicker
-              label="Hora Preferida"
+              label="Preferred time"
               name="hora"
               value={horaHHMM}
               onChange={setHoraHHMM}
             />
 
             <div className={styles.field}>
-              <span className={styles.fieldLabel}>¿Cómo prefieres que hablemos?</span>
+              <span className={styles.fieldLabel}>How do you prefer to meet?</span>
               <ChipToggle
                 name="tipoReunion"
                 value={meetingType}
                 onChange={(v) => setMeetingType(v as any)}
                 options={[
-                  { label: "Videollamada", value: "video" },
-                  { label: "Llamada", value: "phone" },
-                  { label: "Presencial", value: "inperson" },
+                  { label: "Video call", value: "video" },
+                  { label: "Phone call", value: "phone" },
+                  { label: "In person", value: "inperson" },
                 ]}
               />
             </div>
 
             <div className={styles.durationBox}>
-              <span className={styles.durationLabel}>Duración estimada:</span>
-              <span className={styles.durationPill}>30–45 minutos</span>
+              <span className={styles.durationLabel}>Estimated duration:</span>
+              <span className={styles.durationPill}>30–45 minutes</span>
             </div>
 
-            {/* contexto oculto */}
+            {/* hidden context */}
             <input type="hidden" name="subject" value={subjectDefault} />
             <input type="hidden" name="service" value={serviceSlug || selected?.slug || ""} />
             <input type="hidden" name="tipoReunion" value={meetingType} />
 
             <button type="submit" className={styles.submit} disabled={sending}>
               <Send size={18} />
-              <span>{sending ? "Enviando..." : "¡Hablemos de tu Proyecto!"}</span>
+              <span>{sending ? "Sending..." : "Let’s talk about your project"}</span>
             </button>
 
             {notice && (
