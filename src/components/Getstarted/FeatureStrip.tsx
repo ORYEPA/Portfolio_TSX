@@ -3,9 +3,9 @@ import styles from "../../styles/GetStarted.module.css";
 
 export default function FeatureStrip() {
   const items = [
-    { Icon: Clock, title: "Respuesta Rápida", desc: "Te contactamos en menos de 2 horas hábiles" },
-    { Icon: UserRoundCheck, title: "Consulta Personalizada", desc: "Solución adaptada a tus necesidades" },
-    { Icon: BadgeCheck, title: "Sin Compromiso", desc: "Primera consulta gratuita" },
+    { Icon: Clock, title: "Fast Response", desc: "We’ll get back to you within 2 business hours" },
+    { Icon: UserRoundCheck, title: "Personalized Consultation", desc: "A solution tailored to your needs" },
+    { Icon: BadgeCheck, title: "No Commitment", desc: "First consultation is free" },
   ];
   return (
     <div className={styles.strip}>
