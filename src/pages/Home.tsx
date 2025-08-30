@@ -5,13 +5,12 @@ import { Sidebar } from '../components/Sidebar';
 import { HeroSection } from '../components/Hero/HeroSection';
 import { AboutSection } from '../components/Aboutme/AboutSection';
 import { ProjectsSection } from '../components/Projects/ProjectsSection';
-import ServicesSection from '../components/Servicess/ServicesSection';   
+import ServicesSection from '../components/Servicess/ServicesSection';
 import { NotesSection } from '../components/NotesSection';
-import { RandomSection } from '../components/RandomSection';
 import { ThemeProvider } from '../contexts/ThemeProvider';
 import { ThemeSelector } from '../components/ThemeSelector';
-import CertificatesOverview from '../components//Certificate/CertificatesOverview';
-
+import CertificatesOverview from '../components/Certificate/CertificatesOverview';
+import Resume from '../components/Exp/Resume';
 import { Menu, X } from 'lucide-react';
 import styles from '../styles/Home.module.css';
 
@@ -27,7 +26,8 @@ function HomeContent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'services', 'certificates', 'notes', 'random'];
+      // ⬇️ agrega 'resume' a la lista para que el scroll-spy lo detecte
+      const sections = ['home', 'about', 'resume', 'services', 'projects', 'certificates', 'notes'];
       const pos = window.scrollY + 120;
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -82,6 +82,12 @@ function HomeContent() {
       <main className={styles.mainContent}>
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
+
+        {/* ⬇️ Nueva sección Resume */}
+        <section id="resume">
+          <Resume />
+        </section>
+
         <section id="services"><ServicesSection /></section>
         <section id="projects"><ProjectsSection /></section>
         <section id="certificates"><CertificatesOverview /></section>
