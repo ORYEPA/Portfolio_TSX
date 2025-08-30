@@ -2,7 +2,7 @@
 .hero {
   position: relative;
   padding: 6rem 2rem 4rem;
-  background: var(--theme-bg);
+  background: transparent;
 }
 
 .content {

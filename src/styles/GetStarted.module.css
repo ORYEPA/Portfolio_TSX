@@ -15,7 +15,7 @@
 /* ---------- layout general ---------- */
 .section{
   padding: 2.5rem 1rem 3rem;
-  background: var(--theme-bg);
+  background: transparent;
   min-height: 100dvh;
 }
 .header{

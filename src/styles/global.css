@@ -262,7 +262,7 @@ html, body, #root {
   min-height: 100%;
   height: 100%;
   font-size: var(--font-size);
-  background: var(--app-bg); /* cambia por tema */
+  background: var(--app-bg) !important; 
   margin: 0;
 }
 html { transition: background 300ms ease; }
@@ -344,3 +344,39 @@ html { transition: background 300ms ease; }
   }
 }
 
+/* 1) Fondo global continuo (ya lo tienes, lo dejamos) */
+html, body, #root {
+  background: var(--app-bg) !important;
+}
+
+/* 2) El layout NO pinta fondo */
+main,
+.main-content,
+.mainContent,
+.appContainer {
+  background: transparent !important;
+}
+
+/* 3) Cada sección (por id) sin fondo propio */
+#home,
+#about,
+#resume,
+#services,
+#projects,
+#certificates,
+#notes {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* 4) Anula pseudo-elementos que puedan dibujar “bandas” arriba/abajo */
+#home::before, #home::after,
+#about::before, #about::after,
+#resume::before, #resume::after,
+#services::before, #services::after,
+#projects::before, #projects::after,
+#certificates::before, #certificates::after,
+#notes::before, #notes::after {
+  content: none !important;
+}

@@ -1,9 +1,7 @@
-/* Resume.module.css */
 
-/* ----- Sección ----- */
 .section {
   padding: 4rem 1.25rem;
-  background: var(--theme-bg);
+  background: transparent;
 }
 
 /* Encabezado */
@@ -94,9 +92,9 @@
   white-space: nowrap;
   font-weight: 700;
   font-size: .95rem;
-  color: #10b981;                 /* verde */
-  background: rgba(16, 185, 129, .12);
-  border: 1px solid rgba(16, 185, 129, .28);
+  color:var(--theme-secondary-end);                 
+  background: var(--theme-accent-end);
+  border: var(--theme-secondary-start);
   padding: .35rem .6rem;
   border-radius: 999px;
 }

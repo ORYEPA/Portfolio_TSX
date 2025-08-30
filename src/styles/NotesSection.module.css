@@ -1,6 +1,6 @@
 .container {
   padding: 2rem;
-  background: var(--theme-bg);
+  background: transparent;
 }
 
 .header {
