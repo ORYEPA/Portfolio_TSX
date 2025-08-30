@@ -1,6 +1,6 @@
 .section {
   padding: 4rem 2rem;
-  background: var(--theme-bg);
+  background: transparent;
   position: relative;
 }
 
