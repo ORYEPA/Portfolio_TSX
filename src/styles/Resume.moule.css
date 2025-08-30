@@ -1,0 +1,127 @@
+/* Resume.module.css */
+
+/* ----- Sección ----- */
+.section {
+  padding: 4rem 1.25rem;
+  background: var(--theme-bg);
+}
+
+/* Encabezado */
+.header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  color: var(--theme-navbar);
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.25));
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: .4px;
+  color: var(--theme-text);
+}
+
+/* Lista de tarjetas */
+.list {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* ----- Tarjeta ----- */
+.card {
+  background: var(--theme-card-bg, #1b1f33); /* aseguras contraste con el bg */
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 16px;
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 38px rgba(0,0,0,.22);
+  border-color: rgba(255,255,255,.12);
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+
+/* Títulos y meta */
+.cardTitle {
+  margin: 0 0 .2rem 0;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--theme-text);
+}
+
+.cardOrg {
+  color: #e8e8e8;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.metaRow {
+  margin-top: .35rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .95rem;
+  color: #cfd3db;
+  opacity: .95;
+}
+
+.meta { opacity: .95; }
+.dot { opacity: .6; }
+
+/* Badge de fechas */
+.badge {
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: .95rem;
+  color: #10b981;                 /* verde */
+  background: rgba(16, 185, 129, .12);
+  border: 1px solid rgba(16, 185, 129, .28);
+  padding: .35rem .6rem;
+  border-radius: 999px;
+}
+
+.badgeDash {
+  opacity: .6;
+  margin: 0 .25rem;
+}
+
+/* Cuerpo */
+.cardBody {
+  margin-top: .6rem;
+  color: #e4e7ee;
+  line-height: 1.6;
+}
+
+/* Placeholder de carga */
+.cardBody:empty::after {
+  content: "Loading…";
+  color: #d0d3db;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 640px) {
+  .section { padding: 3rem 1rem; }
+  .cardHead { flex-direction: column; align-items: flex-start; }
+  .badge { margin-top: .35rem; }
+}
