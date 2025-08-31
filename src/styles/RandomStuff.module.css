@@ -1,0 +1,210 @@
+/* ===== RandomStuff.module.css =====
+   Usa tus variables globales; iconos con colores fijos.
+*/
+
+/* Sección */
+.section {
+  position: relative;
+  padding: clamp(40px, 6vw, 80px) 20px 100px;
+  background: transparent;                /* deja ver --app-bg */
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+/* Encabezado */
+.header {
+  max-width: 800px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+.title {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  margin: 0 0 10px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--theme-primary-start), var(--theme-primary-end));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.subtitle {
+  margin: 0 auto;
+  color: var(--muted-foreground);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Grid */
+.grid {
+  --cols: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+  max-width: 1100px;
+  margin: 28px auto 0;
+}
+@media (max-width: 980px) { .grid { --cols: 2; } }
+@media (max-width: 640px) { .grid { --cols: 1; } }
+
+/* ===== Card base: bajo contraste ===== */
+.card {
+  position: relative;
+  background: color-mix(in oklab, var(--card) 78%, var(--background) 22%);
+  color: var(--card-foreground);
+  border-radius: var(--radius-xl, 24px);
+  padding: 28px 24px;
+  border: 1px solid color-mix(in oklab, var(--border) 80%, var(--theme-background-end) 10%);
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    outline .15s ease,
+    border-color .15s ease;
+  text-decoration: none; /* por si es <a> */
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.10);
+  border-color: color-mix(in oklab, var(--border), var(--theme-primary-end) 16%);
+}
+
+.clickable { cursor: pointer; }
+.clickable:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+
+/* Gradiente sutil de tono */
+.card::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  opacity: .35;
+}
+.card.violet::before {
+  background: linear-gradient(180deg,
+    color-mix(in oklab, var(--theme-background-end) 22%, transparent),
+    transparent);
+}
+.card.blue::before   { background: linear-gradient(180deg, color-mix(in oklab, var(--theme-secondary-start) 14%, transparent), transparent); }
+.card.green::before  { background: linear-gradient(180deg, color-mix(in oklab, var(--theme-accent-start) 14%, transparent), transparent); }
+.card.pink::before   { background: linear-gradient(180deg, color-mix(in oklab, var(--theme-primary-end) 14%, transparent), transparent); }
+.card.orange::before { background: linear-gradient(180deg, color-mix(in oklab, var(--chart-4) 14%, transparent), transparent); }
+.card.teal::before   { background: linear-gradient(180deg, color-mix(in oklab, var(--chart-2) 14%, transparent), transparent); }
+
+/* Contenido por encima del ::before */
+.iconWrap, .cardTitle, .blurb, .desc { position: relative; z-index: 1; }
+
+/* Icono/píldora — base (se sobreescribe más abajo por tarjeta) */
+.iconWrap {
+  width: 64px; height: 64px;
+  border-radius: calc(var(--radius) + 10px);
+  display: grid; place-items: center;
+  margin-bottom: 10px;
+  background:
+    radial-gradient(120% 120% at 10% 0%,
+      color-mix(in oklab, var(--input-background) 75%, white 10%),
+      color-mix(in oklab, var(--input-background) 35%, transparent));
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25), 0 4px 12px rgb(0 0 0 / 0.06);
+  color: var(--card-foreground);
+}
+.icon { width: 32px; height: 32px; color: inherit; }
+
+.clickable:hover .iconWrap {
+  color: color-mix(in oklab, var(--card-foreground) 85%, var(--theme-primary-end) 15%);
+}
+
+/* Títulos y textos */
+.cardTitle { font-size: 22px; font-weight: 700; margin: 6px 0 4px; }
+.clickable .cardTitle { text-decoration: underline transparent; text-underline-offset: 3px; }
+.clickable:hover .cardTitle { text-decoration-color: rgb(0 0 0 / 0.25); }
+
+.blurb {
+  color: color-mix(in oklab, var(--muted-foreground) 85%, var(--card-foreground) 15%);
+  font-size: 14px; line-height: 1.5; margin: 0 0 14px; text-align: center;
+}
+
+/* Pastilla de descripción */
+.desc {
+  font-size: 14px; line-height: 1.55; padding: 14px 16px;
+  border-radius: calc(var(--radius) + 6px);
+  background: color-mix(in oklab, var(--input-background) 65%, var(--card) 35%);
+  border: 1px solid color-mix(in oklab, var(--border) 85%, var(--theme-background-end) 10%);
+}
+
+/* Burbujas decorativas */
+.bubbles {
+  position: absolute; inset-inline: 0; bottom: -12px;
+  display: flex; gap: 28px; justify-content: center;
+  opacity: .6; pointer-events: none;
+}
+.bubbles svg {
+  width: 34px; height: 34px; padding: 8px; border-radius: 999px;
+  background: color-mix(in oklab, var(--muted), transparent);
+  border: 1px solid var(--border);
+  filter: blur(.2px);
+  animation: rs-bob 4s ease-in-out infinite;
+  color: var(--muted-foreground);
+}
+.bubbles svg:nth-child(2) { animation-delay: .2s; }
+.bubbles svg:nth-child(3) { animation-delay: .4s; }
+.bubbles svg:nth-child(4) { animation-delay: .6s; }
+.bubbles svg:nth-child(5) { animation-delay: .8s; }
+.bubbles svg:nth-child(6) { animation-delay: 1s; }
+
+@keyframes rs-bob {
+  0%,100% { transform: translateY(0) }
+  50%     { transform: translateY(-8px) }
+}
+
+/* ===== COLORES FIJOS PARA ICONOS (independientes del tema) ===== */
+.card.blue .iconWrap {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;  /* Reading → azul */
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.12), inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  transform: rotate(-6deg);
+}
+.card.green .iconWrap {
+  background: linear-gradient(135deg, #10b981, #059669) !important;  /* Drawing → verde */
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.12), inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  transform: rotate(4deg);
+}
+.card.pink .iconWrap {
+  background: linear-gradient(135deg, #a855f7, #ec4899) !important;  /* Violin → rosa */
+  color: #ffffff !important;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.12), inset 0 0 0 1px rgb(255 255 255 / 0.25);
+  transform: rotate(-8deg);
+}
+.icon { color: inherit !important; }
+
+/* ===== Animación de iconos (flotan + se balancean) ===== */
+.iconWrap {
+  --tilt: 0deg;   /* ángulo base por tarjeta */
+  --amp: 8px;     /* amplitud del “flote” */
+  --wobble: 0.6;  /* cuánto oscila el tilt en la cresta */
+  animation: rs-bob-tilt 5.2s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.card.blue  .iconWrap { --tilt: -6deg; animation-duration: 5.4s; animation-delay: .1s; }
+.card.green .iconWrap { --tilt:  4deg; animation-duration: 4.8s; animation-delay: .3s; }
+.card.pink  .iconWrap { --tilt: -8deg; animation-duration: 5.8s; animation-delay: .2s; }
+
+/* Hover: un poco más de amplitud y velocidad */
+.clickable:hover .iconWrap {
+  --amp: 10px;
+  animation-duration: 4.2s;
+}
+
+@keyframes rs-bob-tilt {
+  0%   { transform: translateY(0) rotate(var(--tilt)); }
+  25%  { transform: translateY(calc(var(--amp) * -1)) rotate(calc(var(--tilt) * (1 - var(--wobble)))); }
+  50%  { transform: translateY(0) rotate(var(--tilt)); }
+  75%  { transform: translateY(var(--amp)) rotate(calc(var(--tilt) * (1 + var(--wobble)))); }
+  100% { transform: translateY(0) rotate(var(--tilt)); }
+}
+
+/* Respeto a usuarios que prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .iconWrap { animation: none !important; transform: rotate(var(--tilt)); }
+}
