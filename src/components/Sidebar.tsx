@@ -15,8 +15,8 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
     { id: 'home', label: 'Home', icon: Home },
     { id: 'about', label: 'About me', icon: User },
     { id: 'services', label: 'Services', icon: Wrench },
-    { id: 'education', label: 'Education', icon: GraduationCap },
-    { id: 'experience', label: 'Experience', icon: Briefcase },
+    { id: 'resume', label: 'Education', icon: GraduationCap },
+    { id: 'resume', label: 'Experience', icon: Briefcase },
     { id: 'projects', label: 'Projects', icon: FolderOpen },
     { id: 'certificates', label: 'Certificates', icon: Award },
     { id: 'notes', label: 'Notes', icon: StickyNote },
@@ -38,7 +38,6 @@ export function Sidebar({ activeSection, onSectionChange }: SidebarProps) {
       className={styles.sidebar}
     >
       <div className={styles.container}>
-        {/* Logo/Avatar */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}

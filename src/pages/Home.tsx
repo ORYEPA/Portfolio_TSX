@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sidebar } from '../components/Sidebar';
@@ -11,6 +10,7 @@ import { ThemeProvider } from '../contexts/ThemeProvider';
 import { ThemeSelector } from '../components/ThemeSelector';
 import CertificatesOverview from '../components/Certificate/CertificatesOverview';
 import Resume from '../components/Exp/Resume';
+import RandomStuff from '../components/Random/RandomStuff'; 
 import { Menu, X } from 'lucide-react';
 import styles from '../styles/Home.module.css';
 
@@ -26,8 +26,7 @@ function HomeContent() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // ⬇️ agrega 'resume' a la lista para que el scroll-spy lo detecte
-      const sections = ['home', 'about', 'resume', 'services', 'projects', 'certificates', 'notes'];
+      const sections = ['home', 'about', 'resume', 'resume', 'services', 'projects', 'certificates', 'random', 'notes'];
       const pos = window.scrollY + 120;
       for (const id of sections) {
         const el = document.getElementById(id);
@@ -83,16 +82,15 @@ function HomeContent() {
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
 
-        {/* ⬇️ Nueva sección Resume */}
-        <section id="resume">
-          <Resume />
-        </section>
+        <section id="resume"><Resume /></section>
 
         <section id="services"><ServicesSection /></section>
         <section id="projects"><ProjectsSection /></section>
         <section id="certificates"><CertificatesOverview /></section>
+
         <section id="notes"><NotesSection /></section>
-        {/* <section id="random"><RandomSection /></section> */}
+        <section id="random"><RandomStuff /></section>
+
       </main>
     </div>
   );
