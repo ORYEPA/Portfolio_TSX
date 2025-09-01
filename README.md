@@ -1,7 +1,7 @@
 # 🌌 Portafolio Personal --- Andrea Elena Hernández Peyro
 
-![Portfolio Preview](./public/preview.png)
-`<!-- puedes cambiar por tu screenshot -->`{=html}
+<img width="1803" height="877" alt="image" src="https://github.com/user-attachments/assets/ea0fa597-817e-4ca1-b613-bbe687b2b18e" />
+
 
 Este es mi **portafolio personal** desarrollado con **React +
 TypeScript** y desplegado en **Cloudflare Pages**.\
@@ -86,7 +86,9 @@ El proyecto está desplegado en **Cloudflare Pages**\
   ------------------------------------------------------------------------------------------------------------------
   Home                                 Certificates                           Notes
   ------------------------------------ -------------------------------------- --------------------------------------
-  ![Home](./public/screens/home.png)   ![Certs](./public/screens/certs.png)   ![Notes](./public/screens/notes.png)
+  ![Home](<img width="1803" height="877" alt="image" src="https://github.com/user-attachments/assets/538292e8-cec7-4de1-a5ce-0997dc0e7bb7" />)   ![Certs](<img width="1117" height="828" alt="image" src="https://github.com/user-attachments/assets/4e5e4803-1fe4-460b-89fd-3b108c3a1498" />
+)   ![Notes](<img width="1118" height="758" alt="image" src="https://github.com/user-attachments/assets/03cf43d3-c3b8-4531-b7d2-5f294a08852b" />
+)
 
   ------------------------------------------------------------------------------------------------------------------
 
@@ -97,9 +99,9 @@ El proyecto está desplegado en **Cloudflare Pages**\
 -   [x] Sección de educación y experiencia
 -   [x] Estadísticas de certificaciones y skills más repetidas
 -   [x] Integración con Notion API para notas
--   [ ] Agregar un blog técnico ✍️
--   [ ] Sección de proyectos con filtros dinámicos
--   [ ] Modo offline con PWA
+-   [x] Agregar un blog técnico ✍️
+-   [x] Sección de proyectos con filtros dinámicos
+-   [x] Modo offline con PWA
 
 ------------------------------------------------------------------------
 
