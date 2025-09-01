@@ -1,51 +1,115 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 🌌 Portafolio Personal --- Andrea Elena Hernández Peyro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Portfolio Preview](./public/preview.png)
+`<!-- puedes cambiar por tu screenshot -->`{=html}
 
-## Available Scripts
+Este es mi **portafolio personal** desarrollado con **React +
+TypeScript** y desplegado en **Cloudflare Pages**.\
+El objetivo principal es **mostrar quién soy, mis proyectos,
+certificaciones y habilidades**, integrando secciones dinámicas y datos
+en tiempo real.
 
-In the project directory, you can run:
+------------------------------------------------------------------------
 
-### `npm start`
+## 🚀 Características
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   🎨 **Diseño limpio y moderno** con soporte para temas (dark,
+    twilight, sunset, earthen).
+-   📚 **Sección de Certificaciones** conectada a **Firebase Storage**,
+    con estadísticas de skills y progreso.
+-   📝 **Notas & Random Stuff** con integración a Notion API.
+-   🏗 **Educación y Experiencia** cargadas desde archivos Markdown
+    (`/content`).
+-   🖼 **Grid de Certificados** con vista previa, tarjetas estilizadas y
+    opción de *Load More*.
+-   🔐 **Autenticación con cookies** para links privados o anónimos.
+-   📊 **Resumen visual de habilidades** con barras de progreso.
+-   🎶 Sección "Random Stuff" con hobbies (leer, dibujar, tocar violín
+    🎻) y animaciones en íconos.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+------------------------------------------------------------------------
 
-### `npm test`
+## 🛠️ Tecnologías
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   **React 18** ⚛️
+-   **TypeScript** 📘
+-   **Firebase Storage** 🔥
+-   **Astro** (estructura de contenidos en `content/`)
+-   **Cloudflare Pages** ☁️ para el deploy
+-   **CSS puro** 🎨 (tema oscuro en tonos morados y azules, sin
+    Tailwind)
 
-### `npm run build`
+------------------------------------------------------------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Estructura principal del proyecto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    /public         # Imágenes, íconos y assets estáticos
+    /src
+      /components   # Componentes reutilizables (Cards, Grids, Navbar, etc.)
+      /pages        # Secciones del portafolio (About, Certificates, Notes, etc.)
+      /services     # Integraciones (Firebase, Notion, etc.)
+      /styles       # Estilos en CSS puro
+    /content
+      /DataEducation   # Datos de educación en Markdown
+      /DataExperience  # Datos de experiencia en Markdown
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+------------------------------------------------------------------------
 
-### `npm run eject`
+## ⚡ Instalación y ejecución en local
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+``` bash
+# 1. Clonar el repo
+git clone https://github.com/ORYEPA/Portfolio_TSX.git
+cd Portfolio_TSX
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 2. Instalar dependencias
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# 3. Ejecutar en local
+npm run dev
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# 4. Abrir en el navegador
+http://localhost:3000
+```
 
-## Learn More
+------------------------------------------------------------------------
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🌍 Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-=======
-# Portfolio_TSX
-portafolio con typescript
->>>>>>> origin/main
+El proyecto está desplegado en **Cloudflare Pages**\
+👉 [Portafolio en vivo](https://andrea-peyro-portfolio.pages.dev)
+
+------------------------------------------------------------------------
+
+## 📸 Screenshots
+
+  ------------------------------------------------------------------------------------------------------------------
+  Home                                 Certificates                           Notes
+  ------------------------------------ -------------------------------------- --------------------------------------
+  ![Home](./public/screens/home.png)   ![Certs](./public/screens/certs.png)   ![Notes](./public/screens/notes.png)
+
+  ------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 🗺️ Roadmap
+
+-   [x] Sección de educación y experiencia
+-   [x] Estadísticas de certificaciones y skills más repetidas
+-   [x] Integración con Notion API para notas
+-   [ ] Agregar un blog técnico ✍️
+-   [ ] Sección de proyectos con filtros dinámicos
+-   [ ] Modo offline con PWA
+
+------------------------------------------------------------------------
+
+## 📬 Contacto
+
+📧 **andreaelenapeyro@gmail.com**\
+🔗 [LinkedIn](https://www.linkedin.com/in/andrea-peyro)\
+🖥 [GitHub](https://github.com/ORYEPA)\
+🗂 [Portafolio en vivo](https://andrea-peyro-portfolio.pages.dev)
+
+------------------------------------------------------------------------
+
+💜 Creado con pasión por **Andrea Elena Hernández Peyro**
