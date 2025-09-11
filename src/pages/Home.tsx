@@ -81,10 +81,10 @@ function HomeContent() {
       <main className={styles.mainContent}>
         <section id="home"><HeroSection /></section>
         <section id="about"><AboutSection /></section>
-
+        <section id="services"><ServicesSection /></section>
         <section id="resume"><Resume /></section>
 
-        <section id="services"><ServicesSection /></section>
+        
         <section id="projects"><ProjectsSection /></section>
         <section id="certificates"><CertificatesOverview /></section>
 
