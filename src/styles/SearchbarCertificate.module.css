@@ -1,0 +1,7 @@
+/* src/styles/CertificatesSearchBar.module.css */
+.wrapper { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(6px); padding: .75rem; }
+.row { display: flex; gap: .5rem; align-items: center; }
+.input, .select { padding: .6rem .8rem; border-radius: .75rem; border: 1px solid var(--border, #444); background: var(--card, #1d1f27); color: var(--foreground,#fff); }
+.input { flex: 1; }
+.clearBtn { padding: .6rem .9rem; border-radius: .75rem; border: 1px solid transparent; background: var(--secondary,#2a2f3a); color: var(--foreground,#fff); cursor: pointer; }
+.clearBtn:hover { opacity: .9; }

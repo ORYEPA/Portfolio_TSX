@@ -1,16 +1,9 @@
 import React from 'react';
 import { ExternalLink, CalendarDays, Award } from 'lucide-react';
-import styles from '../../styles/CertificatesGrid.module.css'; 
+import styles from '../../styles/CertificatesGrid.module.css';
+import type { Certificate } from '../../services/certificates';
 
-interface CertificateCardProps {
-  id: string;
-  title: string;
-  issuer: string;
-  year: string;
-  skills: string[];
-  pdfUrl: string;
-  imageUrl: string;
-}
+type CertificateCardProps = Certificate;
 
 const CertificateCard = ({
   id,
@@ -31,7 +24,7 @@ const CertificateCard = ({
       <div className={styles["certificate-body"]}>
         <div className={styles["certificate-title-row"]}>
           <h3 className={styles["certificate-title"]}>{title}</h3>
-          <a href={pdfUrl} target="_blank" rel="noopener noreferrer" title="Ver certificado">
+          <a href={pdfUrl} target="_blank" rel="noopener noreferrer" title="View certificate">
             <ExternalLink size={16} />
           </a>
         </div>
